@@ -4,7 +4,8 @@ class User < ActiveRecord::Base
   validates :email, :presence => true,
                     :uniqueness => { :case_sensitive => false },
                     :format => { :with => /^.+@.+\..+$/ }
-  validates :name, :presence => true
+  validates :name, :presence => true,
+                    :uniqueness => { :case_sensitive => false } 
   
   has_many :posts, :dependent => :destroy
 end
