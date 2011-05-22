@@ -1,9 +1,9 @@
 require 'test_helper'
 
 class UsersControllerTest < ActionController::TestCase
-  test "should get new" do
+  setup do
     get :new
-    assert_response :success
   end
-
+  should respond_with(:success)
+  should render_template(:new)
 end

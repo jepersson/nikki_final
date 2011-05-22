@@ -1,9 +1,10 @@
 Nikki::Application.routes.draw do
 
-  get "users/new"
+  resources :users, :posts
 
-  root :to => 'high_voltage/pages#show', :id => 'about'
+  root :to => 'high_voltage/pages#show', :id => 'home'
   
+  match '/signup', :to => 'users#new'
   match '/about' => 'high_voltage/pages#show', :id => 'about'  
   match '/contact' => 'high_voltage/pages#show', :id => 'contact'
   match '/help' => 'high_voltage/pages#show', :id => 'help'

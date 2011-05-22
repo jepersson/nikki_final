@@ -11,8 +11,14 @@ gem 'high_voltage'
 gem 'clearance'
 gem 'paperclip'
 
+group :development do
+	gem 'faker', '0.3.1'
+end
+
+
 group :test do
 	gem 'factory_girl'
+	gem 'factory_girl_rails'
 	gem 'shoulda'
 end
 	

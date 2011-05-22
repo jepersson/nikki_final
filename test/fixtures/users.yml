@@ -4,8 +4,3 @@ one:
   name: MyString
   intro: MyText
   email: MyString
-
-two:
-  name: MyString
-  intro: MyText
-  email: MyString
