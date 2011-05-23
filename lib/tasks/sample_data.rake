@@ -48,7 +48,7 @@ def make_comments
   Post.all(:limit => 5).each do |post|
     User.all(:limit => 5).each do |user|
       content = Faker::Lorem.sentence(2)
-      post.comments.create!(:user_id => user.id, :content => content)
+      user.comments.create!(:post_id => post.id, :content => content)
     end
   end
 end
