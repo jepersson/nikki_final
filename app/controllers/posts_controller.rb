@@ -10,11 +10,9 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @comments = @post.comments.all
   end
-
-  def quickview
-    @post = Post.find(params[:id])
-    @view = params[:view]
-  end
   
+  def create
+    
+  end
 end
 

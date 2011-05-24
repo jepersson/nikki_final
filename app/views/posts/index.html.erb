@@ -3,17 +3,17 @@
 <% @posts.each do |post| %>
 	
 	<div id="post-small-id-<%= post.id %>" class="post-frame-small">
-		<%= link_to_function image_tag("../images/b.jpg"), "$$('div.post-border').each(Element.hide); $$('div.post-frame-small').each(Element.show); $('post-id-" + post.id.to_s + "').show(); $('post-small-id-" + post.id.to_s + "').hide();" %>
+		<%= link_to_function image_tag("../images/b.jpg", :border => 0), "$$('div.post-border').each(Element.hide); $$('div.post-frame-small').each(Element.show); $('post-id-" + post.id.to_s + "').show(); $('post-small-id-" + post.id.to_s + "').hide();" %>
 		<div class="post-headline"><%= post.title %></div>
 	</div>
 
 	<div id="post-id-<%= post.id %>" class="post-border" style="display: none;">
 	<div class="post-menu-border">
 		<ul id="post-menu">
-			<li id="photo"><%= link_to "hej", post_path(:id => post.id, :view => "photo"), :remote => true %></li>
-			<li id="post"><%= link_to "hej", post_path(:id => post.id, :view => "post"), :remote => true %></li>
-			<li id="comment"><%= link_to "hej", post_path(:id => post.id, :view => "comments"), :remote => true %></li>
-			<li id="location"><%= link_to "hej", post_path(:id => post.id, :view => "map"), :remote => true %></a></li>
+			<li id="photo"><%= link_to "", post_path(:id => post.id, :view => "photo"), :remote => true %></li>
+			<li id="post"><%= link_to "", post_path(:id => post.id, :view => "post"), :remote => true %></li>
+			<li id="comment"><%= link_to "", post_path(:id => post.id, :view => "comments"), :remote => true %></li>
+			<li id="location"><%= link_to "", post_path(:id => post.id, :view => "map"), :remote => true %></a></li>
 		</ul>
 	</div>
 

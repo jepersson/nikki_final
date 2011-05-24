@@ -52,13 +52,39 @@ body {
 
 /* Menu */
 
-.menu {
+#menu {
 	height: 50px; width: 980px;
 	margin: 0px auto 20px auto;
-	background-image: url(../images/menu.png);}
-.menu img {
-	float: left;
-	margin: 10px;}
+	background: url(../images/icons/menu.png) no-repeat;}
+#menu li {
+	margin: 0px; padding: 0px; list-style: none; float: left;}
+#menu li, #menu a {
+	height: 50px; display: block;}
+	
+#index {margin: 0px 0px 0px 10px; width: 190px;}
+#feed {width: 100px;}
+#create {width: 130px;}
+#profile {width: 110px;}
+#space {width: 350px;}
+#about {margin: 0px 10px 0px 0px; width: 90px;}
+	
+#index a {margin: 0px 0px 0px 10px; width: 180px;}
+#feed a {width: 100px;}
+#create a {width: 130px;}
+#profile a {width: 110px;}
+#space a {width: 350px;}
+#about a {margin: 0px 10px 0px 0px; width: 90px;}
+
+#index a:hover {
+    background: -10px 0px transparent url(../images/icons/menu-hover.png) no-repeat;}
+#feed a:hover {
+    background: -190px 0px transparent url(../images/icons/menu-hover.png) no-repeat;}
+#create a:hover {
+    background: -290px 0px transparent url(../images/icons/menu-hover.png) no-repeat;}
+#profile a:hover {
+    background: -420px 0px transparent url(../images/icons/menu-hover.png) no-repeat;}
+#about a:hover {
+    background: -880px 0px transparent url(../images/icons/menu-hover.png) no-repeat;}
 
 /* Post-menu */
 
@@ -86,16 +112,7 @@ body {
     background: -75px 0px transparent url(../images/icons/icons-hover.png) no-repeat;}
 #location a:hover {
     background: -49px 0px transparent url(../images/icons/icons-hover.png) no-repeat;}
-    
-#photo a.selected {
-    background: 0px 0px transparent url(../images/icons/icons-selected.png) no-repeat;}
-#post a.selected {
-    background: -26px 0px transparent url(../images/icons/icons-selected.png) no-repeat;}
-#comment a.selected {
-	background: -75px 0px transparent url(../images/icons/icons-selected.png) no-repeat;}
-#location a.selected {
-    background: -49px 0px transparent url(../images/icons/icons-selected.png) no-repeat;}
-    
+
 /* Post */
 
 .post-border {

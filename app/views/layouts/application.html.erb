@@ -7,7 +7,14 @@
   <%= csrf_meta_tag %>
 </head>
 <body>
-<div class="menu"></div>
+	<ul id="menu">
+		<li id="index"><%= link_to "" %></li>
+		<li id="feed"><%= link_to "" %></li>
+		<li id="create"><%= link_to "" %></li>
+		<li id="profile"><%= link_to "" %></a></li>
+		<li id="space"></li>
+		<li id="about"><%= link_to "", about_path %></a></li>
+	</ul>
 <%= yield %>
 
 </body>
