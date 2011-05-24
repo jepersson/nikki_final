@@ -1,0 +1,15 @@
+<div>
+	<% case params[:view] %>
+		<% when "photo" %>
+			<img src="../images/b.jpg">
+		<% when "post" %>
+			<div class="post-date"><%= @post.title %></div>
+			<div class="post-time"><%= time_ago_in_words(post.created_at) %></div>
+			<div class="post-head"><%= @post.title %></div>
+			<div class="post-content"><%= @post.content %></div>
+		<% when "comments" %>
+			<%= render @post.comments %>
+		<% when "map" %>
+			mapmapapap
+	<% end %>
+</div>

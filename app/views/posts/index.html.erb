@@ -1,8 +1,26 @@
-<h1>All Posts</h1>
-<ul>
-	<% @posts.each do |post| %>
-		<li>
-			<%= link_to post.title, post %><br/>
-		</li>
-	<% end %>
-</ul>
+
+<div class="content-border">
+<% @posts.each do |post| %>
+	
+	<div id="post-small-id-<%= post.id %>" class="post-frame-small">
+		<%= link_to_function image_tag("../images/b.jpg"), "$$('div.post-border').each(Element.hide); $$('div.post-frame-small').each(Element.show); $('post-id-" + post.id.to_s + "').show(); $('post-small-id-" + post.id.to_s + "').hide();" %>
+		<div class="post-headline"><%= post.title %></div>
+	</div>
+
+	<div id="post-id-<%= post.id %>" class="post-border" style="display: none;">
+	<div class="post-menu-border">
+		<ul id="post-menu">
+			<li id="photo"><%= link_to "hej", post_path(:id => post.id, :view => "photo"), :remote => true %></li>
+			<li id="post"><%= link_to "hej", post_path(:id => post.id, :view => "post"), :remote => true %></li>
+			<li id="comment"><%= link_to "hej", post_path(:id => post.id, :view => "comments"), :remote => true %></li>
+			<li id="location"><%= link_to "hej", post_path(:id => post.id, :view => "map"), :remote => true %></a></li>
+		</ul>
+	</div>
+
+	<div id="content-id-<%= post.id.to_s %>" class="post-frame">
+		<img src="../images/b.jpg" />
+	</div>
+	</div>
+
+<% end %>
+</div>
