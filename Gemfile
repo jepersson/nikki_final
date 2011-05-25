@@ -8,8 +8,7 @@ gem 'rake', '0.8.7'
 
 gem 'sqlite3'
 gem 'high_voltage'
-gem 'clearance'
-gem 'paperclip'
+gem 'authlogic'
 
 group :development do
 	gem 'faker', '0.3.1'
