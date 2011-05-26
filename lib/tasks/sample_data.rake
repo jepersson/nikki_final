@@ -14,14 +14,19 @@ end
 def make_users
   User.create!(:name => "Example User",
                :email => "example@gmail.com",
-               :intro => "Hej du glade galosh")
+               :intro => "Hej du glade galosh",
+               :password => "password",
+               :password_confirmation => "password")
   99.times do |n|
     name = Faker::Name.name
     email = "example-#{n+1}@gmail.com"
     intro = Faker::Lorem.sentence(15)
+    password = "password-#{n+1}"
     User.create!(:name => name,
                  :email => email,
-                 :intro => intro)
+                 :intro => intro,
+                 :password => password,
+                 :password_confirmation => password)
   end
 end  
 

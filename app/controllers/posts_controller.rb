@@ -1,6 +1,4 @@
 class PostsController < ApplicationController
-  def new
-  end
   
   def index
     @posts = Post.all
@@ -11,8 +9,18 @@ class PostsController < ApplicationController
     @comments = @post.comments.all
   end
   
+  def new
+    @post = Post.new
+  end
+  
   def create
-    
+    @post = Post.new(params[:post])
+    @post.user = current_user
+    if @post.save
+      redirect_to posts_path
+    else
+      redirect_to new_post_path
+    end
   end
 end
 

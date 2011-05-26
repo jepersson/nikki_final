@@ -32,6 +32,8 @@ GEM
     authlogic (3.0.3)
       activerecord (>= 3.0.7)
       activerecord (>= 3.0.7)
+    authlogic-oid (1.0.4)
+      authlogic
     builder (2.1.2)
     erubis (2.6.6)
       abstract (>= 1.0.0)
@@ -80,6 +82,7 @@ PLATFORMS
 
 DEPENDENCIES
   authlogic
+  authlogic-oid
   factory_girl
   factory_girl_rails
   faker (= 0.3.1)

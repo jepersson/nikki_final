@@ -1,10 +1,14 @@
 Nikki::Application.routes.draw do
 
-  resources :users, :posts
+  resources :users, :posts, :user_sessions
+  resources :account, :controller => "users"
 
-  root :to => 'high_voltage/pages#show', :id => 'home'
+  root :to => 'posts#index'
   
-  match '/signup', :to => 'users#new'
+  match '/signup' => 'users#new'
+  match '/signout' => 'user_sessions#destroy'
+  match '/signin' => 'user_sessions#new'
+  
   match '/about' => 'high_voltage/pages#show', :id => 'about'  
   match '/contact' => 'high_voltage/pages#show', :id => 'contact'
   match '/help' => 'high_voltage/pages#show', :id => 'help'

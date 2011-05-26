@@ -1,15 +1,32 @@
-<h1>Sign up</h1>
+<div class="static-border">
+	<div class="static-head">
+		<h1>Sign up.</h1>
+	</div>
+	<div class="static-mid">
+		<%= form_for @user do |f| %>
+			<div>
+				<%= f.label :name %><br />
+				<%= f.text_field :name %>
+			</div>
+			<div>
+				<%= f.label :email %><br />
+				<%= f.text_field :email %>
+		  </div>
+		  <div>
+		    <%= f.label :password %><br />
+		    <%= f.password_field :password %>
+		  </div>
+			<div>
+		    <%= f.label :password_confirmation %><br />
+		    <%= f.password_field :password_confirmation %>
+		  </div>
+		  <div>
+		    <%= f.submit "Sign up" %>
+		  </div>
+		<% end %>
+	</div>	
+	<div class="static-tail">
+		Justice League <i>of</i> Sweden
+	</div>	
+</div>
 
-<%= form_for(@user) do |f| %>
-  <div>
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
-  <div>
-    <%= f.label :email %><br />
-    <%= f.text_field :email %>
-  </div>
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>

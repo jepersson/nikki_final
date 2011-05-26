@@ -9,13 +9,24 @@
 <body>
 	<ul id="menu">
 		<li id="index"><%= link_to "" %></li>
-		<li id="feed"><%= link_to "" %></li>
-		<li id="create"><%= link_to "" %></li>
-		<li id="profile"><%= link_to "" %></a></li>
+		<li id="feed"><%= link_to "", posts_path %></li>
+		<li id="create"><%= link_to "", new_post_path %></li>
+		<% if current_user %>
+			<li id="profile"><%= link_to "", user_path(current_user) %></a></li>
+		<% else %>
+			<li id="profile"><%= link_to "", signin_path %></a></li>
+		<% end %>
 		<li id="space"></li>
 		<li id="about"><%= link_to "", about_path %></a></li>
 	</ul>
-<%= yield %>
-
+	<div id="user_nav">
+	  <% if current_user %>
+	    <%= link_to "Logout", signout_path %>
+	  <% else %>
+	    <%= link_to "Register", signup_path %> |
+	    <%= link_to "Login", new_user_session_path %>
+	  <% end %>
+	</div>
+	<%= yield %>
 </body>
 </html>
