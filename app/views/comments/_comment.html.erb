@@ -1,15 +1,16 @@
-<ul class="comment-list">
-	<li>
-		<div class="comment-text-border">
-    		<div class="comment-user">
-				<a href="#1">Sebastian Wikander </a>
-			</div>
-			<div class="comment-content">
-				<%= comment.content %><br /><%= time_ago_in_words(comment.created_at) %> ago.
+<li>
+	<div class="comment-image">
+		<img src="../images/user/seba-small.png">
+	</div>
+	<div class="comment-text-border">
+		<div class="comment-user">
+			<a href="#1">Sebastian Wikander </a>
+		</div>
+		<div class="comment-content">
+			<%= comment.content %>
+			<div class="comment-time">
+				<%= time_ago_in_words(comment.created_at) %> ago.
 			</div>
 		</div>
-		<div class="comment-image">
-			<a href="#1"><img src="../images/user/seba-small.png" /></a>
-		</div>
-	</li>
-</ul>
+	</div>
+</li>

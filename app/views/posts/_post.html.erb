@@ -11,7 +11,17 @@
 				<div><%= button_to "Delete", post, :method => :delete %></div>
 			<% end %>
 		<% when "comments" %>
-			<%= render @post.comments %>
+			<div class="comment-post">
+						<input value="Write a comment" size="50" />
+					</div>
+					<div id="scrollbar_container"> 
+						<div id="scrollbar_track"><div id="scrollbar_handle"></div></div>  
+						<div id="scrollbar_content">
+							<ul class="comment-list">
+								<%= render @post.comments %>
+							</ul>
+						</div>
+					</div>
 		<% when "map" %>
 			mapmapapap
 	<% end %>
