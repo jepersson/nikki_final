@@ -7,6 +7,9 @@
 			<div class="post-time"><%= time_ago_in_words(post.created_at) %></div>
 			<div class="post-head"><%= @post.title %></div>
 			<div class="post-content"><%= @post.content %></div>
+			<% if post.user_id == current_user.id %>
+				<div><%= button_to "Delete", post, :method => :delete %></div>
+			<% end %>
 		<% when "comments" %>
 			<%= render @post.comments %>
 		<% when "map" %>
