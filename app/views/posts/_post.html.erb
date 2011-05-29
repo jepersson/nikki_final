@@ -12,25 +12,23 @@
 					<div><%= button_to "Delete", post, :method => :delete %></div>
 				<% end %>
 			<% end %>
-		<% when "comments" %>
-			<% comment = @current_user.comments.new %>
-			<%= form_for @comment do |f| %>
-			  <div class="comment-post">
-			  	<%= f.text_area :content %>
-			  </div>
-			  <div class="actions">
-			    <%= f.submit "Submit" %>
-			  </div>
-			<% end %>
-				<div id="scrollbar_container"> 
-					<div id="scrollbar_track"><div id="scrollbar_handle"></div></div>  
-					<div id="scrollbar_content">
-						<ul class="comment-list">
-							<%= render @post.comments %>
-						</ul>
-					</div>
+			<% when "comments" %>
+			<div class="comment-post">
+				<%= form_for @comment do |f| %>
+					<%= f.text_field :content %>
+					<%= f.hidden_field :post_id, :value => @post.id %>
+					<%= f.submit "Comment"  %>
+				<% end %>
+			</div>
+			<div id="scrollbar_container"> 
+				<div id="scrollbar_track"><div id="scrollbar_handle"></div></div>  
+				<div id="scrollbar_content">
+					<ul class="comment-list">
+						<%= render @post.comments %>
+					</ul>
 				</div>
-		<% when "map" %>
+			</div>
+			<% when "map" %>
 			mapmapapap
-	<% end %>
-</div>
+			<% end %>
+		</div>

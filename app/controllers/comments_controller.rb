@@ -6,9 +6,9 @@ class CommentsController < ApplicationController
   def create
     @comment = current_user.comments.build(params[:comment])
     if @comment.save
-      redirect_to posts_index
+     redirect_to :back
     else
-      render 'root'
+      redirect_to root_path
     end
   end
 end

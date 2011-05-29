@@ -4,7 +4,7 @@
 	</div>
 	<div class="comment-text-border">
 		<div class="comment-user">
-			<a href="#1">Sebastian Wikander </a>
+			<a href="#1"><%= User.find(comment.user_id).name %></a>
 		</div>
 		<div class="comment-content">
 			<%= comment.content %>
