@@ -3,25 +3,33 @@
 		<% when "photo" %>
 			<img src="../images/b.jpg">
 		<% when "post" %>
-			<div class="post-date"><%= @post.title %></div>
-			<div class="post-time"><%= time_ago_in_words(post.created_at) %></div>
+			<div class="post-date"><%= @post.created_at.strftime("%H:%M") %></div>
+			<div class="post-time"><%= @post.created_at.strftime("%d %B %Y") %></div>
 			<div class="post-head"><%= @post.title %></div>
 			<div class="post-content"><%= @post.content %></div>
-			<% if post.user_id == current_user.id %>
-				<div><%= button_to "Delete", post, :method => :delete %></div>
+			<% if current_user != nil %>
+				<% if post.user_id == current_user.id %>
+					<div><%= button_to "Delete", post, :method => :delete %></div>
+				<% end %>
 			<% end %>
 		<% when "comments" %>
-			<div class="comment-post">
-						<input value="Write a comment" size="50" />
+			<% comment = @current_user.comments.new %>
+			<%= form_for @comment do |f| %>
+			  <div class="comment-post">
+			  	<%= f.text_area :content %>
+			  </div>
+			  <div class="actions">
+			    <%= f.submit "Submit" %>
+			  </div>
+			<% end %>
+				<div id="scrollbar_container"> 
+					<div id="scrollbar_track"><div id="scrollbar_handle"></div></div>  
+					<div id="scrollbar_content">
+						<ul class="comment-list">
+							<%= render @post.comments %>
+						</ul>
 					</div>
-					<div id="scrollbar_container"> 
-						<div id="scrollbar_track"><div id="scrollbar_handle"></div></div>  
-						<div id="scrollbar_content">
-							<ul class="comment-list">
-								<%= render @post.comments %>
-							</ul>
-						</div>
-					</div>
+				</div>
 		<% when "map" %>
 			mapmapapap
 	<% end %>
