@@ -1,6 +1,6 @@
 Nikki::Application.routes.draw do
 
-  resources :users, :posts, :comments, :user_sessions
+  resources :users, :posts, :comments, :relations, :user_sessions
   resources :account, :controller => "users"
 
   root :to => 'posts#index'

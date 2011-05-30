@@ -18,4 +18,8 @@ class User < ActiveRecord::Base
   def follow!(followed)
     self.relations.create!(:followed_id => followed.id)
   end
+  
+  def unfollow!(followed)
+    relations.find_by_followed_id(followed).destroy
+  end
 end

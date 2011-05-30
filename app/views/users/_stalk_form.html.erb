@@ -1,0 +1,9 @@
+<% unless current_user == nil %>
+	<div>
+		<% if current_user.following?(@user) %>
+			<%= render 'unstalk' %>
+		<% else %>
+			<%= render 'stalk' %>
+		<% end %>
+	</div>
+<% end %>
