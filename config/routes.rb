@@ -1,6 +1,6 @@
 Nikki::Application.routes.draw do
 
-  resources :users, :posts
+  resources :users, :posts, :comments
 
   root :to => 'high_voltage/pages#show', :id => 'home'
   

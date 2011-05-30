@@ -1,0 +1,63 @@
+/* Menu */
+
+#menu {
+	float: left;
+	height: 50px; width: 980px;
+	margin: 0px 0px 20px 0px;
+	background: url(../images/icons/menu.png) no-repeat;}
+#menu li {
+	margin: 0px; padding: 0px; list-style: none; float: left;}
+#menu li, #menu a {
+	height: 50px; display: block;}
+	
+#index {margin: 0px 0px 0px 10px; width: 190px;}
+#feed {width: 100px;}
+#create {width: 130px;}
+#profile {width: 110px;}
+#space {width: 350px;}
+#about {margin: 0px 10px 0px 0px; width: 90px;}
+	
+#index a {margin: 0px 0px 0px 10px; width: 180px;}
+#feed a {width: 100px;}
+#create a {width: 130px;}
+#profile a {width: 110px;}
+#space a {width: 350px;}
+#about a {margin: 0px 10px 0px 0px; width: 90px;}
+
+#index a:hover {
+    background: -10px 0px transparent url(../images/icons/menu-hover.png) no-repeat;}
+#feed a:hover {
+    background: -190px 0px transparent url(../images/icons/menu-hover.png) no-repeat;}
+#create a:hover {
+    background: -290px 0px transparent url(../images/icons/menu-hover.png) no-repeat;}
+#profile a:hover {
+    background: -420px 0px transparent url(../images/icons/menu-hover.png) no-repeat;}
+#about a:hover {
+    background: -880px 0px transparent url(../images/icons/menu-hover.png) no-repeat;}
+
+/* Footer */
+
+.footer-title {width: 300px; margin: 0px 0px 10px 0px; color: #ababab;}
+
+#footer {
+	float: left;
+	width: 960px; height: 110px;
+	margin: 20px 10px 0px 10px;
+	border-top: 1px solid #ababab;
+	font-family: helvetica; font-size: 12px; font-weight: 100;
+	padding: 10px 0px 0px 0px;}
+	
+#footer li {
+	width: 100px; margin: 0px; padding: 0px; list-style: none; float: left;}
+#footer a {text-decoration: none;}
+#footer div {float: left; width: 300px; padding: 0px 0px 0px 0px;}
+
+#languages {margin: 0px 10px 0px 10px;}
+#copyright {margin: 0px 10px 0px 10px; color: #ffffff;}
+#links {margin: 0px 10px 0px 10px;}
+
+#languages a {color: #ffffff;}
+#links a {color: #ffffff;}
+	
+#languages a:hover {color: #68a1d2;}
+#links a:hover {color: #ec3838;}
