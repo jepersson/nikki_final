@@ -1,7 +1,7 @@
 <div>
 	<% case params[:view] %>
 		<% when "photo" %>
-			<img src="../images/b.jpg">
+			<img src="../images/h.jpg">
 		<% when "post" %>
 			<div class="post-date"><%= @post.created_at.strftime("%H:%M") %></div>
 			<div class="post-time"><%= @post.created_at.strftime("%d %B %Y") %></div>
@@ -28,7 +28,9 @@
 					</ul>
 				</div>
 			</div>
-			<% when "map" %>
-			mapmapapap
-			<% end %>
-		</div>
+
+	<% when "map" %>
+		<%= raw @map.div(:width => 300, :height => 400) %>
+		<%= raw @map.to_html(:no_load => true) %>	
+	
+<% end %>

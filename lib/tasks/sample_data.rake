@@ -17,7 +17,7 @@ def make_users
                :intro => "Hej du glade galosh",
                :password => "password",
                :password_confirmation => "password")
-  30.times do |n|
+  9.times do |n|
     name = Faker::Name.name
     email = "example-#{n+1}@gmail.com"
     intro = Faker::Lorem.sentence(15)
@@ -33,9 +33,11 @@ end
 def make_posts
   User.all(:limit => 9).each do |user|
     2.times do
-      title = Faker::Lorem.words(1)
+      title = Faker::Lorem.sentence(1)
       content = Faker::Lorem.sentence(10)
-      user.posts.create!(:title => title, :content => content)
+      longitude = (rand()*10+40)
+      latitude = (rand()*10+40)
+      user.posts.create!(:title => title, :content => content, :longitude => longitude, :latitude => latitude)
     end
   end
 end

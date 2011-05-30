@@ -15,13 +15,19 @@ body {
 	background-image: url(../images/background.png);
 	margin: 0px;}
 
-.content-border {
-	width: 960px;
-	margin: 0px auto 0px auto;}	
+#container {
+	width: 980px;
+	margin: 0px auto 0px auto;}
+	
+#content-border {
+	float: left;
+	width: 960px; height: auto;
+	margin: 0px 10px 0px 10px;}	
 
-.static-border {
+#static-border {
+	float: left;
 	width: 960px;
-	margin: 90px auto 60px auto;
+	margin: 30px 10px 60px 10px;
 	padding: 0px;
 	background-color: #fff;
 	
@@ -30,7 +36,8 @@ body {
 	-webkit-box-shadow: 0px 0px 10px #252525;
 	box-shadow: 0px 0px 10px #252525;}
 
-.static-head {
+#static-head {
+	float: left;
 	width: 940px; height: 140px;
 	padding: 10px 10px 10px 10px;
 	background-color: #d3d3d3;
@@ -38,53 +45,28 @@ body {
 	-moz-border-radius: 10px 10px 0px 0px; 
 	border-radius: 10px 10px 0px 0px;}	
 
-.static-mid {
-	width: 940px; height: 140px;
-	padding: 10px 10px 10px 10px;}	
+#static-mid {
+	width: 960px; font-family: helvetica neue;
+	padding: 10px 0px 10px 0px;}	
 
-.static-tail {
+.column-onethird {
+	float: left; width: 300px; height: 100%; font-weight: 200;
+	font-size: 16px; margin: 10px 10px 10px 10px;}
+.column-onethird-italic {
+	float: left; width: 300px; height: 100%; margin: 10px 10px 10px 10px;
+	font-size: 36px; font-style: italic; font-weight: 100;}
+.column-onethird-headline {
+	float: left; width: 300px; height: 40px; font-weight: 100;
+	font-size: 40px; margin: 10px 10px 10px 10px;}
+
+#static-tail {
+	float: left;
 	width: 940px; height: 30px;
 	padding: 10px 10px 10px 10px;
 	background-color: #d3d3d3;
 
 	-moz-border-radius: 0px 0px 10px 10px; 
 	border-radius: 0px 0px 10px 10px;}	
-
-/* Menu */
-
-#menu {
-	height: 50px; width: 980px;
-	margin: 0px auto 20px auto;
-	background: url(../images/icons/menu.png) no-repeat;}
-#menu li {
-	margin: 0px; padding: 0px; list-style: none; float: left;}
-#menu li, #menu a {
-	height: 50px; display: block;}
-	
-#index {margin: 0px 0px 0px 10px; width: 190px;}
-#feed {width: 100px;}
-#create {width: 130px;}
-#profile {width: 110px;}
-#space {width: 350px;}
-#about {margin: 0px 10px 0px 0px; width: 90px;}
-	
-#index a {margin: 0px 0px 0px 10px; width: 180px;}
-#feed a {width: 100px;}
-#create a {width: 130px;}
-#profile a {width: 110px;}
-#space a {width: 350px;}
-#about a {margin: 0px 10px 0px 0px; width: 90px;}
-
-#index a:hover {
-    background: -10px 0px transparent url(../images/icons/menu-hover.png) no-repeat;}
-#feed a:hover {
-    background: -190px 0px transparent url(../images/icons/menu-hover.png) no-repeat;}
-#create a:hover {
-    background: -290px 0px transparent url(../images/icons/menu-hover.png) no-repeat;}
-#profile a:hover {
-    background: -420px 0px transparent url(../images/icons/menu-hover.png) no-repeat;}
-#about a:hover {
-    background: -880px 0px transparent url(../images/icons/menu-hover.png) no-repeat;}
 
 /* Post-menu */
 
@@ -161,7 +143,8 @@ body {
 	height: 55px; width: 300px;
 	padding: 20px 0px 10px 0px;
 	text-align: center;
-	font-size: 50px; font-weight: bold;}
+	font-size: 40px; font-weight: bold;
+	 text-shadow: 0px 1px 1px white, 0px 0px #383838;}
 
 .post-headline {
 	float: left;	

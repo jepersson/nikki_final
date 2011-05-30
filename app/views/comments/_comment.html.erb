@@ -4,7 +4,8 @@
 	</div>
 	<div class="comment-text-border">
 		<div class="comment-user">
-			<a href="#1"><%= User.find(comment.user_id).name %></a>
+			<%= link_to User.find(comment.user_id).name, 
+														user_path(comment.user_id) %>
 		</div>
 		<div class="comment-content">
 			<%= comment.content %>
