@@ -1,6 +1,6 @@
 <h1>New Post</h1>
 
-<%= form_for @post do |f| %>
+<%= form_for @post, :html => { :multipart => true } do |f| %>
 	<div>
 		<%= f.label :title %><br />
 		<%= f.text_field :title %>
@@ -9,6 +9,9 @@
 		<%= f.label :content %><br />
 		<%= f.text_area :content %>
   </div>
+	<div>
+		<%= f.file_field :photo %>
+	</div>
   <div>
     <%= f.submit "Create" %>
   </div>

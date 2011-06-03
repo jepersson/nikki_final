@@ -9,7 +9,8 @@ gem 'rake', '0.8.7'
 gem 'sqlite3'
 gem 'high_voltage'
 gem 'authlogic'
-gem 'flickraw'
+gem 'paperclip'
+gem 'will_paginate'
 
 group :development do
 	gem 'faker', '0.3.1'

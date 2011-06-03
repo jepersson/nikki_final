@@ -1,7 +1,8 @@
 <div>
 	<% case params[:view] %>
 		<% when "photo" %>
-			<img src="../images/h.jpg">
+			<%= link_to image_tag(@post.photo.url(:small)), @post.photo.url(:big),
+			 	:rel => "lightbox", :title => @post.title %>
 		<% when "post" %>
 			<div class="post-date"><%= @post.created_at.strftime("%H:%M") %></div>
 			<div class="post-time"><%= @post.created_at.strftime("%d %B %Y") %></div>

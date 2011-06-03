@@ -1,9 +1,9 @@
-
 <div id="content-border">
+<%= will_paginate @posts %>
 <% @posts.each do |post| %>
 	
 	<div id="post-small-id-<%= post.id %>" class="post-frame-small">
-		<%= link_to_function image_tag("../images/b.jpg", :border => 0), "$$('div.post-border').each(Element.hide); $$('div.post-frame-small').each(Element.show); $('post-id-" + post.id.to_s + "').show(); $('post-small-id-" + post.id.to_s + "').hide();" %>
+		<%= link_to_function image_tag( post.photo.url(:small), :border => 0 ), "$$('div.post-border').each(Element.hide); $$('div.post-frame-small').each(Element.show); $('post-id-" + post.id.to_s + "').show(); $('post-small-id-" + post.id.to_s + "').hide();" %>
 		<div class="post-headline"><%= post.title %></div>
 	</div>
 
@@ -18,9 +18,9 @@
 	</div>
 
 	<div id="content-id-<%= post.id.to_s %>" class="post-frame">
-		<img src="../images/b.jpg" />
+		<%= link_to image_tag(post.photo.url(:small)), post.photo.url(:big),
+		 	:rel => "lightbox[feed]", :title => post.title %>
 	</div>
 	</div>
-
 <% end %>
 </div>
