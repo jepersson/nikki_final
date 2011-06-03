@@ -13,7 +13,7 @@ class Post < ActiveRecord::Base
   has_attached_file :photo,
     :styles => {
       :small => "300x400#",
-      :big => "1024x600>" },
+      :original => "1024x600>" },
     :default_url => "../images/b.jpg"
   
   default_scope :order => 'posts.created_at DESC'
