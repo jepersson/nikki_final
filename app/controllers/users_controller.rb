@@ -1,7 +1,12 @@
 class UsersController < ApplicationController
   def index
-    @title = "All users"
-    @users = User.all
+   if params[:search]
+      @users = User.name_like(params[:search]).
+                    paginate(:page => params[:page], :per_page => 9)
+
+    else
+      @users = User.paginate(:page => params[:page], :per_page => 9)
+    end
   end
   
   def new

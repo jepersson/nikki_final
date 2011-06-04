@@ -11,6 +11,8 @@ gem 'high_voltage'
 gem 'authlogic'
 gem 'paperclip'
 gem 'will_paginate'
+gem 'rd_searchlogic', :require => 'searchlogic', 
+											:git => 'git://github.com/railsdog/searchlogic.git'
 
 group :development do
 	gem 'faker', '0.3.1'

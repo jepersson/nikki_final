@@ -13,6 +13,8 @@ Nikki::Application.routes.draw do
   match '/contact' => 'high_voltage/pages#show', :id => 'contact'
   match '/help' => 'high_voltage/pages#show', :id => 'help'
   
+  match '/find/user/:search' => 'find#user#:search'
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

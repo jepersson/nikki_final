@@ -3,6 +3,11 @@
 	<li id="feed"><%= link_to "" %></li>
 	<li id="create"><%= link_to "" %></li>
 	<li id="profile"><%= link_to "" %></a></li>
-	<li id="space"></li>
+	<li id="space">
+		<% form_tag users_path, :method => 'get' do %>
+			<%= text_field_tag :search %>
+			<%= submit_tag "Search", :name => nil %>
+		<% end %>
+	</li>
 	<li id="about"><%= link_to "", about_path %></a></li>
 </ul>
