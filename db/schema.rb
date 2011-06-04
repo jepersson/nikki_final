@@ -10,7 +10,8 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110530214634) do
+
+ActiveRecord::Schema.define(:version => 20110602102841) do
 
   create_table "comments", :force => true do |t|
     t.string   "content"
@@ -28,6 +29,9 @@ ActiveRecord::Schema.define(:version => 20110530214634) do
     t.datetime "updated_at"
     t.float    "longitude"
     t.float    "latitude"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
   end
 
   create_table "relations", :force => true do |t|

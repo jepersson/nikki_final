@@ -4,14 +4,24 @@
 		<li id="feed"><%= link_to "", posts_path %></li>
 		<li id="profile"><%= link_to "" %></li>
 		<li id="create"><%= link_to "" %></a></li>
-		<li id="space"></li>
+		<li id="space">
+			<% form_tag users_path, :method => 'get' do %>
+				<%= text_field_tag :search %>
+				<%= submit_tag "Search", :name => nil %>
+			<% end %>
+		</li>
 		<li id="logout"><%= link_to "", signout_path %></a></li>
 	</ul>
 <% else %>
 	<ul id="menu">
 		<li id="index"><%= link_to "" %></li>
 		<li id="feed"><%= link_to "", posts_path %></li>
-		<li id="long-space"></li>
+		<li id="long-space">
+			<% form_tag users_path, :method => 'get' do %>
+				<%= text_field_tag :search %>
+				<%= submit_tag "Search", :name => nil %>
+			<% end %>
+		</li>
 		<li id="login"><%= link_to "", new_user_session_path %></a></li>
 	</ul>
 <% end %>

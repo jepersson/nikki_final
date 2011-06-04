@@ -1,7 +1,11 @@
 class PostsController < ApplicationController
-  
   def index
-    @posts = Post.all
+    if params[:search]
+      @posts = Post.title_like(params[:search]).
+                    paginate(:page => params[:page], :per_page => 9)
+    else
+      @posts = Post.paginate(:page => params[:page], :per_page => 9)
+    end
   end
 
   def show
@@ -9,8 +13,9 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @map = GMap.new("post-location-" + @post.id.to_s)
     @map.control_init(:large_map => true,:map_type => true)
-    @map.center_zoom_init([@post.latitude,@post.longitude],6)
-    @map.overlay_init(GMarker.new([@post.latitude,@post.longitude],:title => @post.title, :info_window => @post.user.name))
+    @map.center_zoom_init([@post.longitude,@post.latitude],6)
+    @map.overlay_init(GMarker.new([@post.longitude,@post.latitude],:title => @post.title, 
+                                                                   :info_window => @post.user.name))
   end
   
   def new

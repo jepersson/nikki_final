@@ -1,3 +1,10 @@
+GIT
+  remote: git://github.com/railsdog/searchlogic.git
+  revision: 92487f9773b01d27a350c71d0e12fc0124b866b2
+  specs:
+    rd_searchlogic (3.0.1)
+      activerecord (>= 3.0.0)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -32,8 +39,6 @@ GEM
     authlogic (3.0.3)
       activerecord (>= 3.0.7)
       activerecord (>= 3.0.7)
-    authlogic-oid (1.0.4)
-      authlogic
     builder (2.1.2)
     erubis (2.6.6)
       abstract (>= 1.0.0)
@@ -50,6 +55,9 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.16)
+    paperclip (2.3.11)
+      activerecord (>= 2.3.0)
+      activesupport (>= 2.3.2)
     polyglot (0.3.1)
     rack (1.2.3)
     rack-mount (0.6.14)
@@ -76,18 +84,21 @@ GEM
     treetop (1.4.9)
       polyglot (>= 0.3.1)
     tzinfo (0.3.27)
+    will_paginate (3.0.pre2)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
   authlogic
-  authlogic-oid
   factory_girl
   factory_girl_rails
   faker (= 0.3.1)
   high_voltage
+  paperclip
   rails (= 3.0.7)
   rake (= 0.8.7)
+  rd_searchlogic!
   shoulda
   sqlite3
+  will_paginate

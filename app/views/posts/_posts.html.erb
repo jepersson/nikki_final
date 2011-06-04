@@ -16,7 +16,8 @@
 	</div>
 
 	<div id="content-id-<%= post.id.to_s %>" class="post-frame">
-		<img src="../images/b.jpg" />
+		<%= link_to image_tag(post.photo.url(:small)), post.photo.url(:original),
+		 	:rel => "lightbox[feed]", :title => post.title %>
 	</div>
 	</div>
 <% end %>
