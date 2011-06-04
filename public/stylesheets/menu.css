@@ -3,7 +3,7 @@
 #menu {
 	float: left;
 	height: 50px; width: 980px;
-	margin: 0px 0px 20px 0px;
+	margin: 0px 0px 0px 0px;
 	background: url(../images/icons/menu.png) no-repeat;}
 #menu li {
 	margin: 0px; padding: 0px; list-style: none; float: left;}
@@ -15,7 +15,7 @@
 #menu-login {
 	float: left;
 	height: 50px; width: 980px;
-	margin: 0px 0px 20px 0px;
+	margin: 0px 0px 0px 0px;
 	background: url(../images/icons/menu-user.png) no-repeat;}
 #menu-login li {
 	margin: 0px; padding: 0px; list-style: none; float: left;}
@@ -90,3 +90,37 @@
 	
 #languages a:hover {color: #68a1d2;}
 #links a:hover {color: #ec3838;}
+
+/* Pagination */
+.navigation {
+	float: left;
+	height: 20px; width: 940px;
+	margin: 10px 10px 10px 10px; padding: 0px;}
+
+.pagination {
+	float: left;
+	height: 16px; 
+	-moz-border-radius: 9px; border-radius: 9px;
+	background-color: #d3d3d3;
+	opacity:0.6;filter: alpha(opacity=60);
+	-moz-box-shadow: 1px 1px 1px #fff; -webkit-box-shadow: 1px 1px 1px #fff; box-shadow: 1px 1px 1px #fff;
+	-moz-box-shadow: inset 0px 0px 2px #383838; -webkit-box-shadow: inset 0px 0px 2px #383838; box-shadow: inset 0px 0px 2px #383838;
+	font-family: helvetica; font-size: 12px; font-weight: 100;
+	margin: 0px 10px 0px 10px; padding: 2px;}
+
+.pagination .next_page, .previous_page {
+	float: left;
+	height: 12px;
+	padding: 1px 5px 1px 5px;}
+
+.pagination a {
+	float: left;
+	text-decoration: none;
+	height: 12px;
+	color: #383838;
+	padding: 1px 5px 1px 5px;}
+
+.pagination em {
+	float: left;
+	height: 12px;
+	padding: 1px 5px 1px 5px;}

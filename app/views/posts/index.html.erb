@@ -1,4 +1,11 @@
 <div id="content-border">
-<%= will_paginate @posts %>
+	<div class="navigation">
+		<div class="pagination">
+			<a>Stalking</a>
+			<a>My posts</a>
+			<a>All</a>
+		</div>
+		<%= will_paginate @posts, :prev_label => '<', :next_label => '>' %>
+	</div>
 <%= render 'posts' %>
 </div>
