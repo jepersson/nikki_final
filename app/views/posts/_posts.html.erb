@@ -1,34 +1,8 @@
-<div id="content-border">
-	
-	<div class="user-border">
-		<div class="user-frame">
-			<img src="../images/user/f.jpg" />
-		</div>
-		<div class="user-information">
-			<div class="user-information-head"><%= @user.name %></div>
-			<div class="post-content"><%= @user.intro %>
-				<% if current_user == @user %>
-					<%= link_to "edit", edit_user_path(@user) %>
-				<% end %>
-				<div id="stalk_form"><%= render 'stalk_form' if current_user != nil %></div>
-			</div>
-		</div>
-		<% if @user.latitude != nil %>
-			<div class="user-frame">
-				<%= raw @map.div(:width => 300, :height => 400) %>
-				<%= raw @map.to_html(:no_load => true) %>
-			</div>
-		<% else %>
-			<div class="user-no-location"></div>
-		<% end %>
-	</div>
-	
-	<div class="content-divider">User feed</div>
-	
 <% @posts.each do |post| %>
 	<div id="post-small-id-<%= post.id %>" class="post-frame-small">
 		<%= link_to_function image_tag("../images/b.jpg", :border => 0), "$$('div.post-border').each(Element.hide); $$('div.post-frame-small').each(Element.show); $('post-id-" + post.id.to_s + "').show(); $('post-small-id-" + post.id.to_s + "').hide();" %>
 		<div class="post-headline"><%= post.title %></div>
+		<div class="post-user"><%= link_to post.user.name, user_path(:id => post.user.id) %></div>
 	</div>
 
 	<div id="post-id-<%= post.id %>" class="post-border" style="display: none;">
@@ -45,6 +19,4 @@
 		<img src="../images/b.jpg" />
 	</div>
 	</div>
-
 <% end %>
-</div>

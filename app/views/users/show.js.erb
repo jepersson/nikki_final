@@ -1,0 +1,1 @@
+$("content-id-" + <%= escape_javascript(params[:id]) %>).update("<%= escape_javascript(render :partial => 'user', :locals => { :user => @user, :view => params[:view] }) %>")

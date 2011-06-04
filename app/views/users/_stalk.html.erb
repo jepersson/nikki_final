@@ -1,5 +1,5 @@
 <%= form_for current_user.relations.build(:followed_id => @user.id),
  							:remote => true do |f| %>
-	<div><%= f.hidden_field :followed_id %></div>
+	<%= f.hidden_field :followed_id %>
 	<div><%= f.submit "Stalk" %></div>
 <% end %>

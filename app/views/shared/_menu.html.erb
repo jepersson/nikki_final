@@ -1,8 +1,17 @@
-<ul id="menu">
-	<li id="index"><%= link_to "", posts_path %></li>
-	<li id="feed"><%= link_to "" %></li>
-	<li id="create"><%= link_to "" %></li>
-	<li id="profile"><%= link_to "" %></a></li>
-	<li id="space"></li>
-	<li id="about"><%= link_to "", about_path %></a></li>
-</ul>
+<% if current_user %>
+	<ul id="menu-login">
+		<li id="index"><%= link_to "" %></li>
+		<li id="feed"><%= link_to "", posts_path %></li>
+		<li id="profile"><%= link_to "" %></li>
+		<li id="create"><%= link_to "" %></a></li>
+		<li id="space"></li>
+		<li id="logout"><%= link_to "", signout_path %></a></li>
+	</ul>
+<% else %>
+	<ul id="menu">
+		<li id="index"><%= link_to "" %></li>
+		<li id="feed"><%= link_to "", posts_path %></li>
+		<li id="long-space"></li>
+		<li id="login"><%= link_to "", new_user_session_path %></a></li>
+	</ul>
+<% end %>

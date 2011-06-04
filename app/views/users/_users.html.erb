@@ -1,0 +1,22 @@
+<% @users.each do |user| %>
+	
+	<div id="user-small-id-<%= user.id %>" class="user-frame-small">
+		<%= link_to_function image_tag("../images/user/g.jpg", :border => 0), "$$('div.user-border').each(Element.hide); $$('div.user-frame-small').each(Element.show); $('user-id-" + user.id.to_s + "').show(); $('user-small-id-" + user.id.to_s + "').hide();" %>
+		<div class="user-name"><%= user.name %></div>
+	</div>
+
+	<div id="user-id-<%= user.id %>" class="user-border" style="display: none;">
+	<div class="user-menu-border">
+		<ul id="user-menu">
+			<li id="user-photo"><%= link_to "", user_path(:id => user.id, :view => "photo"), :remote => true %></li>
+			<li id="user-info"><%= link_to "", user_path(:id => user.id, :view => "info"), :remote => true %></li>
+			<li id="user-location"><%= link_to "", user_path(:id => user.id, :view => "map"), :remote => true %></a></li>
+			<li id="user-feed"><%= link_to "", posts_path %></a></li>
+		</ul>
+	</div>
+
+	<div id="content-id-<%= user.id.to_s %>" class="user-frame">
+		<img src="../images/user/g.jpg" />
+	</div>
+	</div>
+<% end %>

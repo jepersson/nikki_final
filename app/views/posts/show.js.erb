@@ -1,1 +1,2 @@
-$("content-id-" + <%= escape_javascript(params[:id]) %>).update("<%= escape_javascript(render :partial => 'post', :locals => { :post => @post, :view => params[:view] }) %>")
+$("content-id-" + <%= escape_javascript(params[:id]) %>).update("<%= escape_javascript(render :partial => 'post', :locals => { :post => @post, :view => params[:view] }) %>");
+var scrollbar = new Control.ScrollBar('scrollbar_content_' + <%= @post.id %>,'scrollbar_track_' + <%= @post.id %>); 

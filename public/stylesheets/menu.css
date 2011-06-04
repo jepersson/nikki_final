@@ -9,32 +9,61 @@
 	margin: 0px; padding: 0px; list-style: none; float: left;}
 #menu li, #menu a {
 	height: 50px; display: block;}
+
+/* Menu - Signed in */
+
+#menu-login {
+	float: left;
+	height: 50px; width: 980px;
+	margin: 0px 0px 20px 0px;
+	background: url(../images/icons/menu-user.png) no-repeat;}
+#menu-login li {
+	margin: 0px; padding: 0px; list-style: none; float: left;}
+#menu-login li, #menu-login a {
+	height: 50px; display: block;}
 	
-#index {margin: 0px 0px 0px 10px; width: 190px;}
-#feed {width: 100px;}
-#create {width: 130px;}
-#profile {width: 110px;}
-#space {width: 350px;}
-#about {margin: 0px 10px 0px 0px; width: 90px;}
+#index {margin: 0px 0px 0px 10px; width: 180px;}
+#feed {width: 90px;}
+#profile {width: 100px;}
+#create {width: 120px;}
+#space {width: 400px;}
+#long-space {width: 620px;}
+#login {margin: 0px 10px 0px 0px; width: 80px;}
+#logout {margin: 0px 10px 0px 0px; width: 80px;}
 	
-#index a {margin: 0px 0px 0px 10px; width: 180px;}
-#feed a {width: 100px;}
-#create a {width: 130px;}
-#profile a {width: 110px;}
-#space a {width: 350px;}
-#about a {margin: 0px 10px 0px 0px; width: 90px;}
+#index a {margin: 0px 0px 0px 10px; width: 170px;}
+#feed a {width: 90px;}
+#profile a {width: 100px;}
+#create a {width: 120px;}
+#space a {width: 400px;}
+#login a {margin: 0px 10px 0px 0px; width: 80px;}
+#logout a {margin: 0px 10px 0px 0px; width: 80px;}
 
 #index a:hover {
-    background: -10px 0px transparent url(../images/icons/menu-hover.png) no-repeat;}
+    background: -10px 0px transparent url(../images/icons/menu-user-hover.png) no-repeat;}
 #feed a:hover {
-    background: -190px 0px transparent url(../images/icons/menu-hover.png) no-repeat;}
-#create a:hover {
-    background: -290px 0px transparent url(../images/icons/menu-hover.png) no-repeat;}
+    background: -180px 0px transparent url(../images/icons/menu-user-hover.png) no-repeat;}
 #profile a:hover {
-    background: -420px 0px transparent url(../images/icons/menu-hover.png) no-repeat;}
-#about a:hover {
-    background: -880px 0px transparent url(../images/icons/menu-hover.png) no-repeat;}
+    background: -270px 0px transparent url(../images/icons/menu-user-hover.png) no-repeat;}
+#create a:hover {
+    background: -370px 0px transparent url(../images/icons/menu-user-hover.png) no-repeat;}
+#logout a:hover {
+    background: -890px 0px transparent url(../images/icons/menu-user-hover.png) no-repeat;}
+#login a:hover {
+    background: -890px 0px transparent url(../images/icons/menu-hover.png) no-repeat;}
 
+#index a:active {
+    background: -10px 0px transparent url(../images/icons/menu-user-active.png) no-repeat;}
+#feed a:active {
+    background: -180px 0px transparent url(../images/icons/menu-user-active.png) no-repeat;}
+#profile a:active {
+    background: -270px 0px transparent url(../images/icons/menu-user-active.png) no-repeat;}
+#create a:active {
+    background: -370px 0px transparent url(../images/icons/menu-user-active.png) no-repeat;}
+#logout a:active {
+    background: -890px 0px transparent url(../images/icons/menu-user-active.png) no-repeat;}
+#login a:active {
+	background: -890px 0px transparent url(../images/icons/menu-active.png) no-repeat;}
 /* Footer */
 
 .footer-title {width: 300px; margin: 0px 0px 10px 0px; color: #ababab;}

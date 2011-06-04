@@ -33,6 +33,11 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
+    @posts = @user.posts.all
+    @map = GMap.new("user-location-" + @user.id.to_s)
+    @map.control_init(:large_map => true,:map_type => true)
+    @map.center_zoom_init([@user.latitude,@user.longitude],6)
+    @map.overlay_init(GMarker.new([@user.latitude,@user.longitude],:title => @user.name, :info_window => @user.name))
   end
   
 end

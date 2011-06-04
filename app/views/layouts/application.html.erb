@@ -14,13 +14,5 @@
 		<%= yield %>
 		<%= render "shared/footer" %>
 	</div>
-	<div id="user_nav">
-		<% if current_user %>
-		<%= link_to "Logout", signout_path %>
-		<% else %>
-		<%= link_to "Register", signup_path %> |
-		<%= link_to "Login", new_user_session_path %>
-		<% end %>
-	</div>
 </body>
 </html>

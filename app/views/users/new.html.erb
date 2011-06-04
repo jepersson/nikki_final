@@ -1,8 +1,9 @@
-<div class="static-border">
-	<div class="static-head">
-		<h1>Sign up.</h1>
+<div id="static-border">
+	<div id="static-head">
+		<h1>Register</h1>
 	</div>
-	<div class="static-mid">
+	<div id="static-mid">
+		<div class="column-onethird">
 		<%= form_for @user do |f| %>
 			<div>
 				<%= f.label :name %><br />
@@ -24,9 +25,17 @@
 		    <%= f.submit "Sign up" %>
 		  </div>
 		<% end %>
+		</div>
+		<div class="column-onethird-italic">
+			“We like you, don't be a dick.”
+		</div>
+		<div class="column-onethird-headline">
+			Not a user yet? 
+		</div>
+		<div class="column-onethird">
+			instead and enjoy the full power of our awesome service where you can stalk your friends, enemies, lovers, ex-lovers or anyone you like.</p><p>Feel your fingers tremble as you write your first post, as you stalk your first pray and make your first comment on that hot girl's photo you saw in school that one time and hasn't had the courage to talk to since.</p><p>You can do all that here, with us.</p><p>Enjoy.</p>
+		</div>
 	</div>	
-	<div class="static-tail">
-		Justice League <i>of</i> Sweden
+	<div id="static-tail">
 	</div>	
 </div>
-
