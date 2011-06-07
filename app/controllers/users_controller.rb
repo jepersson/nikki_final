@@ -18,7 +18,8 @@ class UsersController < ApplicationController
     if @user.save
       redirect_to users_path
     else
-      redirect_to signup_path
+      @title = "Sign up!"
+      render 'new'
     end
   end
   

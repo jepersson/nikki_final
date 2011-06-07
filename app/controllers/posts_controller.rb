@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  
   def index
     if params[:search]
       @posts = Post.title_like(params[:search]).
@@ -19,6 +20,7 @@ class PostsController < ApplicationController
   end
   
   def new
+    @title = "Create Post"
     @post = Post.new
   end
 
@@ -26,9 +28,26 @@ class PostsController < ApplicationController
     @post = Post.new(params[:post])
     @post.user = current_user
     if @post.save
-      redirect_to posts_path
+      if params[:user]
+        redirect_to posts_path
+      else
+        render 'crop'
+      end
     else
-      redirect_to new_post_path
+      render 'new'
+    end
+  end
+  
+  def update
+    @post = Post.find(params[:id])
+    if @post.update_attributes(params[:post])
+      if params[:post][:crop].blank?
+        redirect_to posts_path
+      else
+        render 'crop', :remote => true
+      end
+    else
+      render 'edit'
     end
   end
   
