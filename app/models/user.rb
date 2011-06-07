@@ -1,5 +1,14 @@
 class User < ActiveRecord::Base
   acts_as_authentic
+
+  email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+
+  validates :name, :presence => true,
+                   :length => { :maximum => 50 }
+  validates :intro, :length => { :maximum => 500 }
+  validates :email, :presence => true,
+                    :format => { :with => email_regex },
+                    :uniqueness => { :case_sensitive => false }
   
   has_many :posts, :dependent => :destroy
   has_many :comments, :dependent => :destroy

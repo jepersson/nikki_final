@@ -1,0 +1,40 @@
+<div id="content-border">
+<%= image_tag @post.photo.url(:original), 
+              :alt => "cropbox", 
+              :id => "cropbox",
+ 							:size => "768x450" %>
+</div>
+
+<%= form_for @post do |f| %>
+	<% for attribute in [:x1, :y1, :width, :height] %>
+		<%= f.hidden_field attribute, :id => attribute %>
+	<% end %>
+	<%= f.submit "Crop" %>
+<% end %>
+
+<script type="text/javascript" charset="utf-8">
+
+function onEndCrop( coords, dimensions ) {
+		var ratio = <%= @post.photo_geometry(:original).width %> / $('cropbox').width;
+    $( 'x1' ).value = coords.x1 * ratio;
+    $( 'y1' ).value = coords.y1 * ratio;
+    $( 'width' ).value = dimensions.width * ratio;
+    $( 'height' ).value = dimensions.height * ratio;
+}
+
+Event.observe( window, 'load', function() {
+	new Cropper.ImgWithPreview(
+		'cropbox',
+		{ 
+			ratioDim: {
+				x: 225,
+				y: 300
+			},
+			minWidth: 225,
+			minHeight: 300,
+			displayOnInit: true,
+			onEndCrop: onEndCrop
+		}
+	);
+} );
+</script>

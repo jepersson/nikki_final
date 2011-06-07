@@ -11,8 +11,10 @@ gem 'high_voltage'
 gem 'authlogic'
 gem 'paperclip'
 gem 'will_paginate'
+gem 'dynamic_form'
 gem 'rd_searchlogic', :require => 'searchlogic', 
 											:git => 'git://github.com/railsdog/searchlogic.git'
+						
 
 gem 'geokit'
 

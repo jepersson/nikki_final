@@ -1,4 +1,6 @@
+public/system/photos
 .bundle
 db/*.sqlite3
 log/*.log
 tmp/
+.DS_store
