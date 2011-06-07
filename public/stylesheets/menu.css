@@ -9,7 +9,16 @@
 	margin: 0px; padding: 0px; list-style: none; float: left;}
 #menu li, #menu a {
 	height: 50px; display: block;}
-
+#search {
+	float: left;
+	width: 150px; height: 16px; border: 1px solid #696969;
+	-moz-border-radius: 10px; border-radius: 10px;
+	-moz-box-shadow: inset 0px 0px 2px #383838; -webkit-box-shadow: inset 0px 0px 2px #383838; box-shadow: inset 0px 0px 2px #383838;
+	margin: 9px 30px 0px 30px; padding: 2px 10px 2px 10px;}
+#submit {
+	float: left;
+	margin: 10px 0px 0px 0px;}
+	
 /* Menu - Signed in */
 
 #menu-login {
@@ -91,7 +100,39 @@
 #languages a:hover {color: #68a1d2;}
 #links a:hover {color: #ec3838;}
 
+
 /* Pagination */
+.pagination {
+	float: left; font-family: helvetica; font-size: 12px; font-weight: 100; color: #ababab;}
+.sub-menu {
+	float: left; font-family: helvetica; font-size: 12px; font-weight: 100; color: #ababab;}
+.sub-menu a {
+	float: left;
+	text-decoration: none;
+	color: #ffffff;
+	padding: 0px 20px 0px 10px;}
+.sub-menu a:hover {color: #68a1d2;}
+.sub-menu-head {
+	float: left; font-family: helvetica; font-size: 12px; padding: 0px 10px 0px 10px; font-weight: 100; color: #ababab;}
+.pagination-page {
+	float: left; padding: 0px 0px 0px 30px;
+	font-family: helvetica; font-size: 12px; font-weight: 100; color: #ababab;}
+		
+.pagination .next_page, .previous_page, .gap {
+	float: left;
+	padding: 0px 8px 0px 8px;}
+.pagination a {
+	float: left;
+	text-decoration: none;
+	color: #ffffff;
+	padding: 0px 8px 0px 8px;}
+.pagination a:hover {color: #68a1d2;}
+.pagination em {
+	float: left;
+	padding: 0px 8px 0px 8px;}
+	
+	
+/* Pagination 
 .navigation {
 	float: left;
 	height: 20px; width: 940px;
@@ -101,26 +142,25 @@
 	float: left;
 	height: 16px; 
 	-moz-border-radius: 9px; border-radius: 9px;
-	background-color: #d3d3d3;
-	opacity:0.6;filter: alpha(opacity=60);
+	background-color: #fff;
 	-moz-box-shadow: 1px 1px 1px #fff; -webkit-box-shadow: 1px 1px 1px #fff; box-shadow: 1px 1px 1px #fff;
-	-moz-box-shadow: inset 0px 0px 2px #383838; -webkit-box-shadow: inset 0px 0px 2px #383838; box-shadow: inset 0px 0px 2px #383838;
+	-moz-box-shadow: inset 0px 0px 2px #000; -webkit-box-shadow: inset 0px 0px 2px #000; box-shadow: inset 0px 0px 2px #000;
 	font-family: helvetica; font-size: 12px; font-weight: 100;
 	margin: 0px 10px 0px 10px; padding: 2px;}
 
-.pagination .next_page, .previous_page {
+.pagination .next_page, .previous_page, .gap {
 	float: left;
 	height: 12px;
-	padding: 1px 5px 1px 5px;}
+	padding: 1px 12px 1px 12px;}
 
 .pagination a {
 	float: left;
 	text-decoration: none;
 	height: 12px;
 	color: #383838;
-	padding: 1px 5px 1px 5px;}
+	padding: 1px 12px 1px 12px;}
 
 .pagination em {
 	float: left;
 	height: 12px;
-	padding: 1px 5px 1px 5px;}
+	padding: 1px 12px 1px 12px;}*/

@@ -2,24 +2,32 @@
 	<% case params[:view] %>
 		<% when "photo" %>
 			<%= link_to image_tag(post.photo.url(:small)),
-										post.photo.url(:original),
-			 						:rel => "lightbox[feed]", :title => post.title %>
+								  post.photo.url(:original),
+			 					  :rel => "lightbox[feed]",
+								  :title => post.title %>
 		<% when "post" %>
 			<div class="post-date"><%= @post.created_at.strftime("%H:%M") %></div>
 			<div class="post-time"><%= @post.created_at.strftime("%d %B %Y") %></div>
 			<div class="post-head"><%= @post.title %></div>
 			<div class="post-content"><%= @post.content %></div>
-			<% if current_user != nil %>
-				<% if post.user_id == current_user.id %>
-					<div><%= button_to "Delete", post, :method => :delete %></div>
+			<div class="post-bottom">
+				<% if current_user != nil %>
+					<% if post.user_id == current_user.id %>
+						<div class="post-bottom-link"><%= link_to "Edit", post, :method => :edit %></div>
+						<div class="post-bottom-link"><%= link_to "Delete", post, :method => :delete %></div>
+					<% end %>
 				<% end %>
-			<% end %>
+			</div>
 			<% when "comments" %>
 			<div class="comment-post">
-				<%= form_for @comment do |f| %>
-					<%= f.text_field :content %>
-					<%= f.hidden_field :post_id, :value => @post.id %>
-					<%= f.submit "Comment"  %>
+				<% if current_user != nil %>
+					<%= form_for (@comment, :remote => true) do |f| %>
+						<%= f.text_field :content %>
+						<%= f.hidden_field :post_id, :value => @post.id %>
+						<%= f.submit "Comment"  %>
+					<% end %>
+				<% else %>
+					<%= link_to "Login", new_user_session_path %> to post a comment.
 				<% end %>
 			</div>
 			<div class="scrollbar_container"> 
@@ -32,7 +40,11 @@
 			</div>
 
 	<% when "map" %>
-		<%= raw @map.div(:width => 300, :height => 400) %>
-		<%= raw @map.to_html(:no_load => true) %>	
+		<% if @post.position != nil %>
+			<%= raw @map.div(:width => 300, :height => 400) %>
+			<%= raw @map.to_html(:no_load => true) %>
+		<% else %>
+			<div class="no-map"><div class="no-map-head">No location</div></div>
+		<% end %>
 	
 <% end %>

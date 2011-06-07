@@ -3,6 +3,13 @@ class UsersController < ApplicationController
    if params[:search]
       @users = User.name_like(params[:search]).
                     paginate(:page => params[:page], :per_page => 9)
+      if @users.empty?
+        redirect_to posts_path(:search => params[:search])
+      end
+    elsif params[:view] == "stalkers"
+      @users = current_user.followers.paginate(:page => params[:page], :per_page => 9)
+    elsif params[:view] == "stalking"
+      @users = current_user.following.paginate(:page => params[:page], :per_page => 9)
     else
       @users = User.paginate(:page => params[:page], :per_page => 9)
     end
@@ -37,11 +44,23 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
-    @posts = @user.posts.all
-    @map = GMap.new("user-location-" + @user.id.to_s)
-    @map.control_init(:large_map => true,:map_type => true)
-    @map.center_zoom_init([@user.latitude,@user.longitude],6)
-    @map.overlay_init(GMarker.new([@user.latitude,@user.longitude],:title => @user.name, :info_window => @user.name))
+    if params[:view] == "stalkers"
+      @users = @user.followers.paginate(:page => params[:page], :per_page => 6)
+    elsif params[:view] == "stalking"
+      @users = @user.following.paginate(:page => params[:page], :per_page => 6)
+    else
+      @posts = @user.posts.paginate(:page => params[:page], :per_page => 6)
+    end
+    
+    if @user.position != nil
+      res = Geokit::Geocoders::GoogleGeocoder.geocode(@user.position)
+      @map = GMap.new("user-location-" + @user.id.to_s)
+      @map.control_init(:large_map => true,
+                        :map_type => true)
+      @map.center_zoom_init([res.lat,res.lng],6)
+      @map.overlay_init(GMarker.new([res.lat,res.lng],:title => @user.name, 
+                                                      :info_window => @user.name))
+    end
   end
   
 end

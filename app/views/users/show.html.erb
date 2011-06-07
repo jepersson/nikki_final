@@ -1,19 +1,30 @@
 <div id="content-border">
 	
-	<div class="user-border">
+	<div class="user-show-border">
+		<div class="user-information">
+			<div class="user-information-head"><%= @user.name %></div>
+			<div class="post-content">
+				<% if @user.intro != nil %>
+					<%= @user.intro %>
+				<% else %>
+					Nothing yet. I would have written something if i was not so lazy.
+				<% end %>
+			</div>
+			<div class="user-bottom">
+				<% if current_user != nil %>
+					<% if @user.id == current_user.id %>
+						<div class="user-bottom-link"><%= link_to "edit", edit_user_path(@user) %></div>
+						<div class="user-bottom-link"><div id="stalk_form"><%= render 'stalk_form' if current_user != nil %></div></div>
+					<% end %>
+				<% end %>
+			</div>
+		</div>
+		
 		<div class="user-frame">
 			<img src="../images/user/f.jpg" />
 		</div>
-		<div class="user-information">
-			<div class="user-information-head"><%= @user.name %></div>
-			<div class="post-content"><%= @user.intro %>
-				<% if current_user == @user %>
-					<%= link_to "edit", edit_user_path(@user) %>
-				<% end %>
-				<div id="stalk_form"><%= render 'stalk_form' if current_user != nil %></div>
-			</div>
-		</div>
-		<% if @user.latitude != nil %>
+		
+		<% if @user.position != nil %>
 			<div class="user-frame">
 				<%= raw @map.div(:width => 300, :height => 400) %>
 				<%= raw @map.to_html(:no_load => true) %>
@@ -23,28 +34,15 @@
 		<% end %>
 	</div>
 	
-	<div class="content-divider">User feed</div>
+	<div class="content-divider">
+		<%= render 'shared/usersubmenu' %>
+		<div class="pagination-page">Page:</div>
+		<%= will_paginate @posts, :prev_label => '<', :next_label => '>' %>
+	</div>
+	<% if @users != nil %>
+		<%= render 'users/users' %>
+	<% else %>
+		<%= render 'posts/posts' %>
+	<% end %>
 	
-<% @posts.each do |post| %>
-	<div id="post-small-id-<%= post.id %>" class="post-frame-small">
-		<%= link_to_function image_tag("../images/b.jpg", :border => 0), "$$('div.post-border').each(Element.hide); $$('div.post-frame-small').each(Element.show); $('post-id-" + post.id.to_s + "').show(); $('post-small-id-" + post.id.to_s + "').hide();" %>
-		<div class="post-headline"><%= post.title %></div>
-	</div>
-
-	<div id="post-id-<%= post.id %>" class="post-border" style="display: none;">
-	<div class="post-menu-border">
-		<ul id="post-menu">
-			<li id="photo"><%= link_to "", post_path(:id => post.id, :view => "photo"), :remote => true %></li>
-			<li id="post"><%= link_to "", post_path(:id => post.id, :view => "post"), :remote => true %></li>
-			<li id="comment"><%= link_to "", post_path(:id => post.id, :view => "comments"), :remote => true %></li>
-			<li id="location"><%= link_to "", post_path(:id => post.id, :view => "map"), :remote => true %></a></li>
-		</ul>
-	</div>
-
-	<div id="content-id-<%= post.id.to_s %>" class="post-frame">
-		<img src="../images/b.jpg" />
-	</div>
-	</div>
-
-<% end %>
 </div>

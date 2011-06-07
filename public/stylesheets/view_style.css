@@ -26,11 +26,11 @@ body {
 
 .content-divider {
 	float: left;
-	width: 940px; height: 12px;
+	width: 960px; height: 12px;
 	margin: 20px 0px 20px 0px;
 	border-bottom: 1px solid #ababab; 
 	font-family: helvetica; font-size: 12px; font-weight: 100; color: #ababab;
-	padding: 0px 10px 5px 10px;}
+	padding: 0px 0px 5px 0px;}
 
 
 #static-border {
@@ -64,6 +64,9 @@ body {
 .column-onethird-italic {
 	float: left; width: 300px; height: 100%; margin: 10px 10px 10px 10px;
 	font-size: 36px; font-style: italic; font-weight: 100;}
+.login-onethird-italic {
+	float: left; width: 300px; height: 400px; margin: 10px 10px 10px 10px; color: #ffffff;
+	font-size: 36px; font-style: italic; font-weight: 100; font-family: helvetica neue; }
 .column-onethird-headline {
 	float: left; width: 300px; height: 40px; font-weight: 100;
 	font-size: 40px; margin: 10px 10px 10px 10px;}
@@ -180,6 +183,18 @@ body {
 	height: 400px; width: 300px;
 	margin: 10px 10px 10px 10px;}
 
+.no-map {
+	float: left;
+	background-image: url(../images/location-background.png);
+	height: 400px; width: 300px;}
+.no-map-head {
+	width: 280px;
+	padding: 20px 0px 10px 0px; margin: 300px 10px 0px 10px;
+	text-align: center;
+	font-size: 22px; font-weight: bold; color: #383838;
+	text-shadow: 0px 1px 1px white, 0px 0px #383838;}
+
+
 .user-head {
 	float: left;	
 	width: 280px;
@@ -195,15 +210,29 @@ body {
 	padding: 5px 0px 5px 0px;
 	text-align: center;
 	font-size: 14px; font-weight: bold;
-	text-shadow: 0px 1px 1px #252525, 1px 1px #383838;
-	}
+	text-shadow: 0px 1px 1px #252525, 1px 1px #383838;}
 
 .user-content {
 	float: left;	
-	height: 35px; width: 280px;
+	height: 230px; width: 280px;
 	padding: 10px;
-	text-align: left; font-size: 12px;
-	}
+	text-align: left; font-size: 12px;}
+.user-content a {
+	text-decoration: none; color: #68a1d2;}
+.user-content a:hover {
+	color: #ffffff;}
+.user-bottom {
+	float: left;	
+	height: 15px; width: 280px;
+	margin: 0px 10px 10px 10px;}
+.user-bottom-link {
+	float: left; width: 30px;
+	margin: 0px 10px 0px 10px;}
+.user-bottom-link a {
+	font-size: 12px; font-weight: bold; text-decoration: none; 
+	color: #ffffff;}	
+.user-bottom-link a:hover {
+	color: #68a1d2;}
 
 /* Post */
 
@@ -226,7 +255,7 @@ body {
 	margin: 10px 10px 10px 10px;
 	background-color: #f5f5f5;
 	font-family: helvetica;
-	color: #383838;
+	color: #383838; overflow: hidden;
 	-moz-box-shadow: 0px 0px 10px #252525;
 	-webkit-box-shadow: 0px 0px 10px #252525;
 	box-shadow: 0px 0px 10px #252525;}
@@ -263,23 +292,31 @@ body {
 	padding: 5px 0px 5px 0px;
 	text-align: center;
 	font-size: 14px; font-weight: bold;
-	text-shadow: 0px 1px 1px #252525, 1px 1px #383838;
-	}
+	text-shadow: 0px 1px 1px #252525, 1px 1px #383838;}
 
 .post-user {
 	float: left;	
 	height: 15px; width: 150px;
 	text-align: center; font-size: 11px;
-	text-shadow: 0px 1px 1px #252525, 1px 1px #383838;
-	}
+	text-shadow: 0px 1px 1px #252525, 1px 1px #383838;}
 	
 .post-content {
 	float: left;	
-	height: 35px; width: 280px;
+	height: 230px; width: 280px;
 	padding: 10px;
-	text-align: left; font-size: 12px;
-	}
-	
+	text-align: left; font-size: 12px;}
+.post-bottom {
+	float: left;	
+	height: 15px; width: 280px;
+	margin: 0px 10px 10px 10px;}
+.post-bottom-link {
+	float: left; width: 30px;
+	margin: 0px 10px 0px 10px;}
+.post-bottom-link a {
+	font-size: 12px; font-weight: bold; text-decoration: none; color: #383838;}	
+.post-bottom-link a:hover {
+	color: #68a1d2;}
+
 /* Post comments */
 	
 .comment-post {
@@ -287,8 +324,12 @@ body {
 	width: 280px; height: 24px;
 	padding: 10px;
 	border-bottom: 1px solid #d3d3d3;
-	}
-
+	font-family: helvetica; font-size: 12px;}
+.comment-post a {
+	text-decoration: none; color: #68a1d2;}
+.comment-post a:hover {
+	color: #383838;}
+	
 .post-frame li {
 	font-family: helvetica; color: #383838;
 	float: left;
@@ -303,15 +344,13 @@ body {
 .comment-user {
 	float: left;
 	height: 15px; width: 225px;
-	text-align: left; font-size: 12px; font-weight: bold;}
-	
+	text-align: left; font-size: 12px; font-weight: bold;}	
 .comment-user a {
 	text-decoration: none; text-align: left;
 	font-size: 12px; font-weight: bold;
 	color: #383838;}
-	
 .comment-user a:hover {
-	color: #123456;}
+	color: #68a1d2;}
 	
 .comment-content {
 	float: left;
@@ -321,10 +360,14 @@ body {
 .comment-time {
 	float: right; 
 	margin: 10px -5px 0px 5px;}
+.comment-time a {
+	text-decoration: none; text-align: left;
+	font-size: 12px; font-weight: bold;
+	color: #383838;}
+.comment-time a:hover {
+	color: #68a1d2;}
 	
 .comment-text-border {
 	float: left;
 	width: 235px;
 	padding: 0px 0px 0px 5px;}
-
-	

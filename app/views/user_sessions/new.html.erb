@@ -1,9 +1,13 @@
-<div id="static-border">
-	<div id="static-head">
-		<h1>Sign in</h1>
+
+<div class="user-information">
+	<div class="user-information-head">Not a user yet?</div>
+	<div class="user-content">
+		<p>don't feel down, sign up <%= link_to "here", signup_path %> instead and enjoy the full power of our awesome service where you can stalk your friends, enemies, lovers, ex-lovers or anyone you like.</p><p>Feel your fingers tremble as you write your first post, as you stalk your first pray and make your first comment on that hot girl's photo you saw in school that one time and hasn't had the courage to talk to since.</p><p>You can do all that here, with us.</p><p>Enjoy.</p>
 	</div>
-	<div id="static-mid">
-		<div class="column-onethird">
+</div>
+<div class="post-frame">
+	<div class="post-head">Sign in</div>
+	<div class="post-content">
 		<% form_for @user_session do |f| %>
 			<div>
 				<%= f.label :email %><br />
@@ -11,24 +15,14 @@
 			</div>
 		  	<div>
 		  		<%= f.label :password %><br />
-				  <%= f.password_field :password %>
+				<%= f.password_field :password %>
 		  	</div>
 			<div>
 				<%= f.submit "Sign in" %>
 			</div>	
-			<div></div>
 		<% end %>
-		</div>
-		<div class="column-onethird-italic">
-			“where you can stalk your friends, enemies, lovers, ex-lovers or just anyone else you like.”
-		</div>
-		<div class="column-onethird-headline">
-			Not a user yet? 
-		</div>
-		<div class="column-onethird">
-			<p>don't feel down, sign up <%= link_to "here", signup_path %> instead and enjoy the full power of our awesome service where you can stalk your friends, enemies, lovers, ex-lovers or anyone you like.</p><p>Feel your fingers tremble as you write your first post, as you stalk your first pray and make your first comment on that hot girl's photo you saw in school that one time and hasn't had the courage to talk to since.</p><p>You can do all that here, with us.</p><p>Enjoy.</p>
-		</div>
-	</div>	
-	<div id="static-tail">
-	</div>	
+	</div>
+</div>
+<div class="login-onethird-italic">
+	“where you can stalk your friends, enemies, lovers, ex-lovers or just anyone else you like.”
 </div>

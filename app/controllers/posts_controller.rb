@@ -3,6 +3,10 @@ class PostsController < ApplicationController
     if params[:search]
       @posts = Post.title_like(params[:search]).
                     paginate(:page => params[:page], :per_page => 9)
+    elsif params[:view] == "my"
+      @posts = current_user.posts.paginate(:page => params[:page], :per_page => 9)
+    elsif params[:view] == "stalking" or current_user != nil
+      @posts = current_user.following.collect{ |p| p.posts }.flatten.sort_by { |p| p.created_at }.reverse.paginate(:page => params[:page], :per_page => 9, :order => 'created_at DESC')
     else
       @posts = Post.paginate(:page => params[:page], :per_page => 9)
     end
@@ -11,11 +15,17 @@ class PostsController < ApplicationController
   def show
     @comment = Comment.new
     @post = Post.find(params[:id])
-    @map = GMap.new("post-location-" + @post.id.to_s)
-    @map.control_init(:large_map => true,:map_type => true)
-    @map.center_zoom_init([@post.longitude,@post.latitude],6)
-    @map.overlay_init(GMarker.new([@post.longitude,@post.latitude],:title => @post.title, 
-                                                                   :info_window => @post.user.name))
+    
+    if @post.position != nil
+      res = Geokit::Geocoders::GoogleGeocoder.geocode(@post.position)
+    
+      @map = GMap.new("post-location-" + @post.id.to_s)
+      @map.control_init(:large_map => true,
+                        :map_type => true)
+      @map.center_zoom_init([res.lat,res.lng],8)
+      @map.overlay_init(GMarker.new([res.lat,res.lng],:title => @post.title, 
+                                                      :info_window => @post.user.name))
+    end
   end
   
   def new
@@ -28,7 +38,7 @@ class PostsController < ApplicationController
     if @post.save
       redirect_to posts_path
     else
-      redirect_to new_post_path
+      render 'new'
     end
   end
   

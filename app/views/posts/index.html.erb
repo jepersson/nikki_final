@@ -1,11 +1,12 @@
 <div id="content-border">
-	<div class="navigation">
-		<div class="pagination">
-			<a>Stalking</a>
-			<a>My posts</a>
-			<a>All</a>
-		</div>
+	<div class="content-divider">
+		<%= render 'shared/submenu' %>
+		<div class="pagination-page">Page:</div>
 		<%= will_paginate @posts, :prev_label => '<', :next_label => '>' %>
 	</div>
-<%= render 'posts' %>
+<% if @posts.empty? %>
+	No posts, sorry dude.
+<% else %>
+	<%= render 'posts' %>
+<% end %>
 </div>

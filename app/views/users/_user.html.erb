@@ -5,6 +5,10 @@
 		<div class="user-head"><%= @user.name %></div>
 		<div class="user-content"><%= @user.intro %></div>
 	<% when "map" %>
-		<%= raw @map.div(:width => 300, :height => 400) %>
-		<%= raw @map.to_html(:no_load => true) %>	
+		<% if @user.position != nil %>
+			<%= raw @map.div(:width => 300, :height => 400) %>
+			<%= raw @map.to_html(:no_load => true) %>
+		<% else %>
+			<div class="no-map"><div class="no-map-head">No location</div></div>
+		<% end %>
 <% end %>

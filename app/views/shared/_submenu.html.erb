@@ -1,0 +1,24 @@
+<% if params[:search] %>
+	<div class="sub-menu-head">Search:</div>
+	<div class="pagination">
+		<%= link_to "Posts", posts_path(:search => params[:search]) %>
+		<%= link_to "Users", users_path(:search => params[:search]) %>
+	</div>
+<% elsif current_user != nil %>
+ 	<div class="sub-menu-head">Posts:</div>
+	<div class="pagination">
+		<%= link_to "Stalking", posts_path(:view => "stalking") %>
+		<%= link_to "My posts", posts_path(:view => "my") %>
+	</div>
+	<div class="sub-menu-head">Users:</div>
+	<div class="pagination">
+		<%= link_to "Stalking", users_path(:view => "stalking") %>
+		<%= link_to "Stalkers", users_path(:view => "stalkers") %>
+	</div>
+<% else %>
+	<div class="sub-menu-head">Feeds:</div>
+	<div class="pagination">
+		<%= link_to "Posts", posts_path(:search => params[:search]) %>
+		<%= link_to "Users", users_path(:search => params[:search]) %>
+	</div>	
+<% end %>

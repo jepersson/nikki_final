@@ -14,6 +14,8 @@ gem 'will_paginate'
 gem 'rd_searchlogic', :require => 'searchlogic', 
 											:git => 'git://github.com/railsdog/searchlogic.git'
 
+gem 'geokit'
+
 group :development do
 	gem 'faker', '0.3.1'
 end

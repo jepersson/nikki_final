@@ -1,8 +1,6 @@
 class Post < ActiveRecord::Base
-  attr_accessible :title, :user_id, :content, :longitude, 
-                  :latitude, :photo
+  attr_accessible :title, :user_id, :content, :position, :photo
                       
-  
   validates :title, :presence => true
   validates :content, :presence => true
   validates :user_id, :presence => true

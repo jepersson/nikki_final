@@ -12,18 +12,16 @@ namespace :db do
 end
 
 def make_users
-  9.times do |n|
+  99.times do |n|
     name = Faker::Name.name
     email = "example-#{n+1}@gmail.com"
     intro = Faker::Lorem.sentence(15)
     password = "password-#{n+1}"
-    longitude = (rand()*10)+130
-    latitude = (rand()*10)+40
+    position = "Stockholm"
     User.create!(:name => name,
                  :email => email,
                  :intro => intro,
-                 :latitude => latitude,
-                 :longitude => longitude,
+                 :position => position,
                  :password => password,
                  :password_confirmation => password)
   end
@@ -31,12 +29,13 @@ end
 
 def make_posts
   User.all(:limit => 9).each do |user|
-    2.times do
+    99.times do
       title = Faker::Lorem.sentence(1)
       content = Faker::Lorem.sentence(10)
-      longitude = (rand()*10+40)
-      latitude = (rand()*10+40)
-      user.posts.create!(:title => title, :content => content, :longitude => longitude, :latitude => latitude)
+      position = "Tokyo"
+      user.posts.create!(:title => title, 
+                         :position => position, 
+                         :content => content)
     end
   end
 end

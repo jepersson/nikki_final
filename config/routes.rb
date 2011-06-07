@@ -1,9 +1,9 @@
 Nikki::Application.routes.draw do
 
   resources :users, :posts, :comments, :relations, :user_sessions
-  resources :account, :controller => "users"
+  resources :account, :welcome, :controller => "users"
 
-  root :to => 'posts#index'
+  root :to => 'welcome#index'
   
   match '/signup' => 'users#new'
   match '/signout' => 'user_sessions#destroy'

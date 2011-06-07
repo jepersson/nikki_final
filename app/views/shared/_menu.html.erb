@@ -1,16 +1,16 @@
 <% if current_user %>
 	<ul id="menu-login">
-		<li id="index"><%= link_to "" %></li>
-		<li id="feed"><%= link_to "", posts_path %></li>
-		<li id="profile"><%= link_to "" %></li>
-		<li id="create"><%= link_to "" %></a></li>
+		<li id="index"><%= link_to "", welcome_index_path %></li>
+		<li id="feed"><%= link_to "", posts_path(:view => "stalking") %></li>
+		<li id="profile"><%= link_to "", user_path(:id => current_user) %></li>
+		<li id="create"><%= link_to "", new_post_path %></a></li>
 		<li id="space">
 			<% form_tag users_path, :method => 'get' do %>
 				<%= text_field_tag :search %>
-				<%= submit_tag "Search", :name => nil %>
+				<%= submit_tag "Search", :id => "submit" %>
 			<% end %>
 		</li>
-		<li id="logout"><%= link_to "", signout_path %></a></li>
+		<li id="logout"><%= link_to "", signout_path %></li>
 	</ul>
 <% else %>
 	<ul id="menu">
@@ -19,9 +19,9 @@
 		<li id="long-space">
 			<% form_tag users_path, :method => 'get' do %>
 				<%= text_field_tag :search %>
-				<%= submit_tag "Search", :name => nil %>
+				<%= submit_tag "Search", :id => "submit" %>
 			<% end %>
 		</li>
-		<li id="login"><%= link_to "", new_user_session_path %></a></li>
+		<li id="login"><%= link_to "", new_user_session_path %></li>
 	</ul>
 <% end %>

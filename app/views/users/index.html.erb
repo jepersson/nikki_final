@@ -1,4 +1,8 @@
 <div id="content-border">
-<%= will_paginate @users, :prev_label => '<<', :next_label => '>>' %>
+	<div class="content-divider">
+		<%= render 'shared/submenu' %>
+		<div class="pagination-page">Page:</div>
+		<%= will_paginate @users, :prev_label => '<', :next_label => '>' %>
+	</div>
 <%= render 'users' %>
 </div>
