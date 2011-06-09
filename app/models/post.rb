@@ -1,5 +1,5 @@
 class Post < ActiveRecord::Base
-  attr_accessible :title, :user_id, :content, :position, :photo, :x1, :y1, :width, :height
+  attr_accessible :title, :content, :position, :photo, :x1, :y1, :width, :height
   attr_accessor :x1, :y1, :width, :height
   after_update :reprocess_photo, :if => :cropping?
 

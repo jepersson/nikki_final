@@ -1,5 +1,17 @@
 class User < ActiveRecord::Base
-  acts_as_authentic
+  attr_accessible :name, :location, :intro, :email, :photo, :x1, :y1, :width, :height
+  attr_accessor :x1, :y1, :width, :height
+  after_update :reprocess_photo, :if => :cropping?
+
+  acts_as_authentic do |c|
+    c.merge_validates_length_of_password_field_options({ :unless => :authenticated? })
+    c.merge_validates_length_of_password_confirmation_field_options({ :unless => :authenticated? })
+    c.merge_validates_confirmation_of_password_field_options({ :unless => :authenticated? })
+  end
+
+  def authenticated?
+    self.authentications.any?
+  end
 
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
@@ -19,6 +31,14 @@ class User < ActiveRecord::Base
     :class_name => "Relation",
     :dependent => :destroy
   has_many :followers, :through => :reverse_relations, :source => "follower"
+  has_many :authentications, :dependent => :destroy
+
+  has_attached_file :photo,
+  :styles => {
+    :small => { :geometry => "300x400#",
+                :processors => [:cropper] },
+  :original => "1024x600>" },
+    :default_url => "../images/b.jpg"
 
   def following?(followed)
     self.relations.find_by_followed_id(followed)
@@ -32,14 +52,28 @@ class User < ActiveRecord::Base
     relations.find_by_followed_id(followed).destroy
   end
 
-  def self.create_with_auth(auth)
-    create! do |user|
-      user.fbid =  auth["uid"]
-      user.name =  auth["user_info"]["name"]
-      user.email = auth["user_info"]["email"]
-      user.password = auth["uid"]
-      user.password_confirmation = auth["uid"]
+  def apply_omniauth(omniauth)
+    self.email = omniauth['user_info']['email']
+
+    case omniauth['provider']
+    when 'facebook'
+      self.name = omniauth['user_info']['name']
     end
   end
+
+  def cropping?
+    !x1.blank? && !y1.blank? && !width.blank? && !height.blank?
+  end
+
+  def photo_geometry(style = :original)
+    @geometry ||= {}
+    @geometry[style] ||= Paperclip::Geometry.from_file(photo.path(style))
+  end
+
+  private
+
+    def reprocess_photo
+      photo.reprocess!
+    end
 
 end
