@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110606165458) do
+ActiveRecord::Schema.define(:version => 20110609021953) do
 
   create_table "comments", :force => true do |t|
     t.string   "content"
@@ -53,6 +53,7 @@ ActiveRecord::Schema.define(:version => 20110606165458) do
     t.string   "password_salt"
     t.string   "crypted_password"
     t.string   "position"
+    t.integer  "fbid"
   end
 
 end

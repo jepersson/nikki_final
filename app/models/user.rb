@@ -4,31 +4,42 @@ class User < ActiveRecord::Base
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
   validates :name, :presence => true,
-                   :length => { :maximum => 50 }
+    :length => { :maximum => 50 }
   validates :intro, :length => { :maximum => 500 }
   validates :email, :presence => true,
-                    :format => { :with => email_regex },
-                    :uniqueness => { :case_sensitive => false }
-  
+    :format => { :with => email_regex },
+    :uniqueness => { :case_sensitive => false }
+
   has_many :posts, :dependent => :destroy
   has_many :comments, :dependent => :destroy
   has_many :relations, :foreign_key => "follower_id",
-                       :dependent => :destroy
+    :dependent => :destroy
   has_many :following, :through => :relations, :source => "followed"
   has_many :reverse_relations, :foreign_key => "followed_id",
-                               :class_name => "Relation",
-                               :dependent => :destroy
+    :class_name => "Relation",
+    :dependent => :destroy
   has_many :followers, :through => :reverse_relations, :source => "follower"
-  
+
   def following?(followed)
     self.relations.find_by_followed_id(followed)
   end
-  
+
   def follow!(followed)
     self.relations.create!(:followed_id => followed.id)
   end
-  
+
   def unfollow!(followed)
     relations.find_by_followed_id(followed).destroy
   end
+
+  def self.create_with_auth(auth)
+    create! do |user|
+      user.fbid =  auth["uid"]
+      user.name =  auth["user_info"]["name"]
+      user.email = auth["user_info"]["email"]
+      user.password = auth["uid"]
+      user.password_confirmation = auth["uid"]
+    end
+  end
+
 end

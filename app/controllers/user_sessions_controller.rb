@@ -1,5 +1,5 @@
 class UserSessionsController < ApplicationController
-  before_filter :require_no_user, :only => [:new, :create]
+  before_filter :require_no_user, :only => [:new, :create, :create_with_fb_auth]
   before_filter :require_user, :only => :destroy
 
   def new
@@ -19,4 +19,16 @@ class UserSessionsController < ApplicationController
     current_user_session.destroy
     redirect_to root_path
   end
+
+  def create_with_auth
+    auth = request.env["omniauth.auth"]
+    user = User.find_by_fbid(auth["uid"]) || User.create_with_auth(auth)
+    @user_session = UserSession.new({ :email => user.email, :password => auth["uid"] })
+    if @user_session.save
+      redirect_to users_path, :notice => "Signed in!"
+    else
+      redirect_to 'new'
+    end
+  end
+
 end

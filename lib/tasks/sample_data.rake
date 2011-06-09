@@ -12,14 +12,13 @@ namespace :db do
 end
 
 def make_users
-  99.times do |n|
     User.create!(:name => 'Example',
                  :email => 'example@gmail.com',
                  :intro => 'Hej du glade galosch!',
-                 :position => "Tokyo"
+                 :position => "Tokyo",
                  :password => 'password',
                  :password_confirmation => 'password')
-  9.times do |n|
+  99.times do |n|
     name = Faker::Name.name
     email = "example-#{n+1}@gmail.com"
     intro = Faker::Lorem.sentence(15)

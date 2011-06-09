@@ -5,6 +5,8 @@ Nikki::Application.routes.draw do
 
   root :to => 'welcome#index'
   
+  match '/auth/:provider/callback' => 'user_sessions#create_with_auth'
+  
   match '/signup' => 'users#new'
   match '/signout' => 'user_sessions#destroy'
   match '/signin' => 'user_sessions#new'
