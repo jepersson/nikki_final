@@ -331,6 +331,17 @@ body {
 .create-post-content textarea {	
 	width: 275px; height: 240px;}
 
+.create-user-content {
+	font-weight: 100;
+	float: left;	
+	width: 280px;
+	padding: 10px;
+	text-align: left; font-size: 12px;}
+.create-user-content div {
+	float: left;}
+.create-user-content textarea {	
+	width: 275px; height: 160px;}
+
 #crop-image-outer-border {
 	margin: 30px auto 30px auto; background-color: #ffffff;}
 #crop-image-border {

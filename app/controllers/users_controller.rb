@@ -3,9 +3,6 @@ class UsersController < ApplicationController
     if params[:search]
       @users = User.name_like(params[:search]).
         paginate(:page => params[:page], :per_page => 9)
-      if @users.empty?
-        redirect_to posts_path(:search => params[:search])
-      end
     elsif params[:view] == "stalkers"
       @users = current_user.followers.paginate(:page => params[:page], :per_page => 9)
     elsif params[:view] == "stalking"
@@ -17,6 +14,17 @@ class UsersController < ApplicationController
     if @users.empty?
       @message = t :no_users
     end
+    
+    respond_to do |format|
+      format.html
+      format.js {
+        render :update do |page|
+          # 'page.replace' will replace full "results" block...works for this example
+          # 'page.replace_html' will replace "results" inner html...useful elsewhere
+          page.replace_html 'results', :partial => 'user_content'
+        end
+      }
+    end
   end
 
   def new
@@ -27,7 +35,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
     if @user.save
-      redirect_to users_path
+      redirect_to posts_path
     else
       @title = "Sign up!"
       render 'new'
@@ -41,7 +49,19 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update_attributes(params[:user])
-      redirect_to @user
+      if params[:crop]
+        render 'crop', :remote => true
+      else
+        if params[:user][:photo]
+          render 'crop', :remote => true
+        else
+          if params[:user][:crop].blank?
+            redirect_to user_path(:view => "user_posts")
+          else
+            render 'crop', :remote => true
+          end
+        end
+      end
     else
       render 'edit'
     end
@@ -49,23 +69,23 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    if params[:view] == "stalkers"
+    if params[:view] == "user_stalkers"
       @users = @user.followers.paginate(:page => params[:page], :per_page => 6)
       if @users.empty? or @posts.empty?
         @message = t :no_users
       end
-    elsif params[:view] == "stalking"
+    elsif params[:view] == "user_stalking"
       @users = @user.following.paginate(:page => params[:page], :per_page => 6)
       if @users.empty? or @posts.empty?
         @message = t :no_users
       end
-    else
+    elsif params[:view] == "user_posts"
       @posts = @user.posts.paginate(:page => params[:page], :per_page => 6)
       if @posts.empty? or @posts.empty?
         @message = t :no_posts
       end
     end
-
+    
     if @user.position != nil
       res = Geokit::Geocoders::GoogleGeocoder.geocode(@user.position)
       @map = GMap.new("post-location-" + @user.id.to_s)
@@ -81,6 +101,19 @@ class UsersController < ApplicationController
       icon_source = Variable.new('icon_source') 
       source = GMarker.new([res.lat,res.lng], :icon => icon_source)
       @map.overlay_init(source)
+    end
+    
+    if params[:view] == "user_stalking" or params[:view] == "user_posts" or params[:view] == "user_stalkers"
+      respond_to do |format|
+        format.html
+        format.js {
+          render :update do |page|
+            # 'page.replace' will replace full "results" block...works for this example
+            # 'page.replace_html' will replace "results" inner html...useful elsewhere
+            page.replace_html 'results', :partial => 'show_content'
+          end
+        }
+      end
     end
   end
 end

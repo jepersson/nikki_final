@@ -16,7 +16,7 @@ class PostsController < ApplicationController
       if @posts.empty?
         @message = t :no_posts_posted
       end
-    elsif params[:view] == "stalking" or current_user != nil
+    elsif params[:view] == "stalking"
       @posts = current_user.following.collect{ |p| p.posts }.flatten.sort_by { |p| p.created_at }.reverse.paginate(:page => params[:page], :per_page => 9, :order => 'created_at DESC')
       if @posts.empty?
         @message = t :no_posts_stalking
@@ -26,6 +26,15 @@ class PostsController < ApplicationController
       if @posts.empty?
         @message = t :no_posts
       end
+    end
+    
+    respond_to do |format|
+      format.html
+      format.js {
+        render :update do |page|
+          page.replace_html 'results', :partial => 'posts_content'
+        end
+      }
     end
   end
 

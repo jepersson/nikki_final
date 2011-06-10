@@ -1,0 +1,26 @@
+<div class="content-divider">
+	<%= render 'shared/user_submenu' %>
+	<div class="pagination-page">Page:</div>
+	<% if @users != nil or @posts != nil %>
+		<%= will_paginate @posts, :prev_label => '<', :next_label => '>' %>
+	<% end %>
+</div>
+
+<% if flash[:notice] %>
+	<div class="flash-notice">
+		<%= t :observe %>:<br />
+		<%= flash[:notice] %>
+	</div>
+<% end %>
+<% if @message %>
+	<div class="message">
+		<%= t :message %>:<br />
+		<%= @message %>
+	</div>
+<% end %>
+
+<% if @users != nil %>
+	<%= render 'users/users' %>
+<% elsif @posts != nil %>
+	<%= render 'posts/posts' %>
+<% end %>

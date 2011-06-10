@@ -1,37 +1,68 @@
-<% if flash[:notice] %>
-	<div class="flash-notice">
-		<%= t :observe %>:<br />
-		<%= flash[:notice] %>
+<div id="content-border">
+	<% if flash[:notice] %>
+		<div class="flash-notice">
+			<%= t :observe %>:<br />
+			<%= flash[:notice] %>
+		</div>
+	<% end %>
+	<% if @message %>
+		<div class="message">
+			<%= t :message %>:<br />
+			<%= @message %>
+		</div>
+	<% end %>
+	<div class="login-onethird-italic">
+		“Create a post! Be happy! Love your frinds and hug your mom”
 	</div>
-<% end %>
-<% if @message %>
-	<div class="message">
-		<%= t :message %>:<br />
-		<%= @message %>
+	<div class="post-frame">
+		<div class="create-user-content">
+			<% form_for @user, :html => { :multipart => true } do |f| %>
+			<% if @user.authentications.any? %>
+			<div>
+				<%= f.label :password %><br />
+				<%= f.password_field :password, :disabled => 'disabled' %>
+			</div>
+			<div>
+				<%= f.label :password_confirmation %><br />
+				<%= f.password_field :password_confirmation, :disabled => 'disabled' %>
+			</div>
+			<% else %>
+			<div>
+				<%= f.label :password %><br />
+				<%= f.password_field :password %>
+			</div>
+			<div>
+				<%= f.label :password_confirmation %><br />
+				<%= f.password_field :password_confirmation %>
+			</div>
+			<% end %>
+
+			<div>
+				<%= f.label :email %><br />
+				<%= f.text_field :email %>
+			</div>
+			<div>
+				<%= f.label :intro %><br />
+				<%= f.text_area :intro %>
+			</div>
+			<div>
+				<%= f.label :position %><br />
+				<%= f.text_field :position %>
+			</div>
+			<div>
+				Use prev picture:<br />
+				<%= check_box_tag "crop" %>
+			</div>
+			<div>
+				<%= f.file_field :photo %>
+			</div>
+			<div>
+				<%= f.submit %>
+			</div>
+			<% end %>
+		</div>
 	</div>
-<% end %>
-<%= form_for @user do |f| %>
-	<div>
-		<%= f.label :name %><br />
-		<%= f.text_field :name %>
+	<div class="login-onethird-italic">
+		“where you can stalk your friends, enemies, lovers, ex-lovers or just anyone else you like.”
 	</div>
-	<div>
-		<%= f.label :email %><br />
-		<%= f.text_field :email %>
-  </div>
-	<div>
-		<%= f.label :intro %><br />
-		<%= f.text_field :intro %>
-  </div>
-  <div>
-    <%= f.label :password %><br />
-    <%= f.password_field :password %>
-  </div>
-	<div>
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation %>
-  </div>
-  <div>
-    <%= f.submit "Edit" %>
-  </div>
-<% end %>
+</div>

@@ -1,0 +1,42 @@
+<div id="content-border">
+<div id="crop-image-outer-border">
+	<div id="crop-image-border"><%= image_tag @user.photo.url(:original), 
+              													:alt => "cropbox", 
+              													:id => "cropbox" %>
+	</div>
+	<div class="crop-bottom">
+		<%= form_for @user do |f| %>
+			<% for attribute in [:x1, :y1, :width, :height] %>
+				<%= f.hidden_field attribute, :id => attribute %>
+			<% end %>
+			<%= f.submit "Crop" %>
+		<% end %>
+	</div>
+</div>
+<script type="text/javascript" charset="utf-8">
+
+function onEndCrop( coords, dimensions ) {
+		var ratio = <%= @user.photo_geometry(:original).width %> / $('cropbox').width;
+    $( 'x1' ).value = coords.x1 * ratio;
+    $( 'y1' ).value = coords.y1 * ratio;
+    $( 'width' ).value = dimensions.width * ratio;
+    $( 'height' ).value = dimensions.height * ratio;}
+
+Event.observe( window, 'load', function() {
+	$('crop-image-border').setStyle({width: '' + $('cropbox').getWidth() + 'px'});
+	$('crop-image-outer-border').setStyle({width: '' + $('crop-image-border').getWidth() + 'px'});
+	new Cropper.ImgWithPreview(
+		'cropbox',
+		{ 
+			ratioDim: {
+				x: 225,
+				y: 300
+			},
+			minWidth: 225,
+			minHeight: 300,
+			displayOnInit: true,
+			onEndCrop: onEndCrop
+		}
+	);
+} );
+</script>

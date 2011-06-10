@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  attr_accessible :name, :location, :intro, :email, :photo, :x1, :y1, :width, :height
+  attr_accessible :name, :location, :intro, :email, :photo, :x1, :y1, :width, :height, :position
   attr_accessor :x1, :y1, :width, :height
   after_update :reprocess_photo, :if => :cropping?
 
