@@ -14,7 +14,7 @@
 				<% if current_user != nil %>
 					<% if @user.id == current_user.id %>
 						<div class="user-bottom-link">
-						  <%= link_to "edit", edit_user_path(@user) %>
+						  <%= link_to t(:edit), edit_user_path(@user) %>
 						</div>
 					<% else%>
 				<div class="user-bottom-link">

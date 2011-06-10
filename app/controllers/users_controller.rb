@@ -10,11 +10,11 @@ class UsersController < ApplicationController
     else
       @users = User.paginate(:page => params[:page], :per_page => 9)
     end
-    
+
     if @users.empty?
       @message = t :no_users
     end
-    
+
     respond_to do |format|
       format.html
       format.js {
@@ -28,16 +28,17 @@ class UsersController < ApplicationController
   end
 
   def new
-    @title = "Sign up!"
+    @title = t(:registration)
     @user = User.new
   end
 
   def create
     @user = User.new(params[:user])
     if @user.save
+      flash[:notice] = t :user_created
       redirect_to posts_path
     else
-      @title = "Sign up!"
+      @title = t(:registration)
       render 'new'
     end
   end
@@ -56,6 +57,7 @@ class UsersController < ApplicationController
           render 'crop', :remote => true
         else
           if params[:user][:crop].blank?
+            flash[:notice] = t :updated_user
             redirect_to user_path(:view => "user_posts")
           else
             render 'crop', :remote => true
@@ -81,11 +83,8 @@ class UsersController < ApplicationController
       end
     elsif params[:view] == "user_posts"
       @posts = @user.posts.paginate(:page => params[:page], :per_page => 6)
-      if @posts.empty? or @posts.empty?
-        @message = t :no_posts
-      end
     end
-    
+
     if @user.position != nil
       res = Geokit::Geocoders::GoogleGeocoder.geocode(@user.position)
       @map = GMap.new("post-location-" + @user.id.to_s)
@@ -94,13 +93,13 @@ class UsersController < ApplicationController
                                        :shadow => "../images/icons/gmap-icon-shadow.png",
                                        :icon_size => GSize.new(40,40),
                                        :shadow_size => GSize.new(64,51),
-                                       :icon_anchor => GPoint.new(18,55)), 
-                                       "icon_source")
-      icon_source = Variable.new('icon_source') 
+                                       :icon_anchor => GPoint.new(18,55)),
+                             "icon_source")
+      icon_source = Variable.new('icon_source')
       source = GMarker.new([res.lat,res.lng], :icon => icon_source)
       @map.overlay_init(source)
     end
-    
+
     if params[:view] == "user_stalking" or params[:view] == "user_posts" or params[:view] == "user_stalkers"
       respond_to do |format|
         format.html
@@ -114,4 +113,5 @@ class UsersController < ApplicationController
       end
     end
   end
+
 end

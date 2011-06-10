@@ -2,37 +2,88 @@
 # See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
+
+  
+  
+# Welcome
   welcome: "Welcome"
+  phone: "Phone"
+  mail: "Mail"
   
 # Footer
   about: "About"
   help: "Help"
-  contect: "Contact"
+  contact: "Contact"
 
-  language: ""
-  copyright: ""
-  links: ""
+  languages: "Languages"
+  copyright: "Copyright"
+  links: "Links"
 
 # Submenu
   search_post: ""
   latest_post: ""
+  stalkers: "Stalkers"
   
-  posts: ""
-  users: ""
-  page: ""
+  feeds: "Feeds"
+  posts: "Posts"
+  users: "Users"
+  page: "Page"
   
 # Flashes
   observe: "Observe"
-  
+  error: "Error"
 
 # Messages 
   message: "Please note"
   no_posts: "No posts to show my good sir."
   no_users: "No users to show my good sir."
   
-# Create post
-  title: ""
-  content: ""
-  location: ""
+# New Post
+  create_post: "Create post"
+  edit_post: "Edit post"
+  title: "Title"
+  content: "Content"
+  location: "Location"
+  crop: "Crop"
   copy_text_create_post_left: ""
   copy_text_create_post_right: ""
+  post_created: "Your post was created without problems."
+  
+# Index Post
+  search: "Search"
+  my_posts: "My posts"
+  stalking: "Stalking"
+  all_posts: "All posts"
+  delete: "Delete"
+  
+# Edit Post
+  post_updated: "Your post was successfully saved."
+  
+# New User
+  registration: "Registration"
+  register: "Register"
+  user_created: "Registration successful. Welcome!"
+  
+# Show User
+  member_since: "Member since"
+  stalk: "Stalk"
+  unstalk: "Unstalk"
+  
+# Edit User
+  edit: "Edit"
+  name: "Name"
+  intro: "Introduction"
+  password_confirmation: "Password confirmation"
+  update_user: "Your information was saved successfully."
+
+# New Session
+  login: "Login"
+  login_oauth: "Or use Oauth"
+  password: "Password"
+  login_success: "You successfully logged in!"
+  
+# Destroy User
+  logout_success: "You are now logged out."
+  
+# Comments
+  login_to_post_a_comment: "to post a comment"

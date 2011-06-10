@@ -9,7 +9,7 @@
 			<% for attribute in [:x1, :y1, :width, :height] %>
 				<%= f.hidden_field attribute, :id => attribute %>
 			<% end %>
-			<%= f.submit "Crop" %>
+			<%= f.submit t(:crop) %>
 		<% end %>
 	</div>
 </div>

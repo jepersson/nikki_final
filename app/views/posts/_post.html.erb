@@ -13,8 +13,8 @@
 			<div class="post-bottom">
 				<% if current_user != nil %>
 					<% if post.user_id == current_user.id %>
-						<div class="post-bottom-link"><%= link_to "Edit", edit_post_path(@post) %></div>
-						<div class="post-bottom-link"><%= link_to "Delete", post, :method => :delete %></div>
+						<div class="post-bottom-link"><%= link_to t(:edit), edit_post_path(@post) %></div>
+						<div class="post-bottom-link"><%= link_to t(:delete), post, :method => :delete %></div>
 					<% end %>
 				<% end %>
 			</div>
@@ -27,7 +27,8 @@
 						<%= f.submit "Comment"  %>
 					<% end %>
 				<% else %>
-					<%= link_to "Login", new_user_session_path %> to post a comment.
+					<%= link_to "Login", new_user_session_path %> 
+					<%= t :login_to_post_a_comment %>.
 				<% end %>
 			</div>
 			<div class="scrollbar_container"> 

@@ -13,7 +13,7 @@
 				<%= time_ago_in_words(comment.created_at) %> ago. 
 				<% if current_user != nil %>
 					<% if comment.user_id == current_user.id %>
-						<%= link_to "Delete", comment, :method => :delete, :remote => true %>
+						<%= link_to t(:delete), comment, :method => :delete, :remote => true %>
 					<% end %>
 				<% end %>
 			</div>

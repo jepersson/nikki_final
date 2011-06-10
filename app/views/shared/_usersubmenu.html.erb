@@ -1,0 +1,9 @@
+<div class="sub-menu-head">Posts:</div>
+<div class="pagination">
+	<%= link_to t(:posts), user_path %>
+</div>
+<div class="sub-menu-head">Users:</div>
+<div class="pagination">
+	<%= link_to t(:stalking), user_path(:view => "stalking") %>
+	<%= link_to t(:stalkers), user_path(:view => "stalkers") %>
+</div>

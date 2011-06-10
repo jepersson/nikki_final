@@ -3,13 +3,15 @@ class UserSessionsController < ApplicationController
   before_filter :require_user, :only => :destroy
 
   def new
+    @title = t(:login)
     @user_session = UserSession.new
   end
 
   def create
     @user_session = UserSession.new(params[:user_session])
     if @user_session.save
-      redirect_to users_path
+      flash[:notice] = t :login_success
+      redirect_to posts_path
     else
       render 'new'
     end
@@ -17,6 +19,7 @@ class UserSessionsController < ApplicationController
 
   def destroy
     current_user_session.destroy
+    flash[:notice] = t :logout_success
     redirect_to root_path
   end
 

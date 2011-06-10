@@ -1,7 +1,7 @@
 <div id="footer">
 	<div id="languages">
 		<ul>
-			<div class="footer-title">Languages:</div>
+			<div class="footer-title"><%= t :languages %>:</div>
 			<li><%= link_to "Svenska", url_for( :locale => 'se' ) %></li>
 			<li><%= link_to "English", url_for( :locale => 'en' ) %></li>
 			<li><%= link_to "日本語", url_for( :locale => 'jp' ) %></li>
@@ -9,11 +9,11 @@
 		</ul>
 	</div>
 	<div id="copyright">
-		<div class="footer-title">Copyright:</div> Justice League <i>of</i> Sweden
+		<div class="footer-title"><%= t :copyright %>:</div> Justice League <i>of</i> Sweden
 	</div>
 	<div id="links">
 		<ul>
-			<div class="footer-title">Links:</div>
+			<div class="footer-title"><%= t :links %>:</div>
 			<li><%= link_to t( :about ), about_path %></li>
 			<li><%= link_to t( :help ), help_path %></li>
 			<li><%= link_to t( :contact ), contact_path %></li>

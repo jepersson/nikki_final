@@ -1,11 +1,10 @@
-
 <div id="content-border">
 <% if flash[:notice] or error_messages_for @user_session %>
-	<div class="flash-notice">
-		<%= t :observe %>:<br />
-		<%= flash[:notice] %><br />
-		<%= error_messages_for @user_session %>
-	</div>
+<div class="flash-notice">
+	<%= t :observe %>:<br />
+	<%= flash[:notice] %><br />
+	<%= error_messages_for @user_session %>
+</div>
 <% end %>
 
 <div class="user-information">
@@ -15,21 +14,26 @@
 	</div>
 </div>
 <div class="post-frame">
-	<div class="post-head">Sign in</div>
+	<div class="post-head"><%= t :login %></div>
 	<div class="post-content">
 		<% form_for @user_session do |f| %>
-			<div>
-				<%= f.label :email %><br />
-				<%= f.text_field :email %>
-			</div>
-		  	<div>
-		  		<%= f.label :password %><br />
-				<%= f.password_field :password %>
-		  	</div>
-			<div>
-				<%= f.submit "Sign in" %>
-			</div>	
-			<p>Or sign in with Facebook <%= link_to "here.", "/auth/facebook" %></p>
+		<div>
+			<%= f.label t :mail %><br />
+			<%= f.text_field :email %>
+		</div>
+		<div>
+			<%= f.label t :password %><br />
+			<%= f.password_field :password %>
+		</div>
+		<div>
+			<%= f.submit t :login %>
+		</div>	
+		<p>
+			<%= t :login_oauth %>:
+		</p>
+		<p> 
+			<%= link_to image_tag( "../images/fb-ikon.jpg"), "/auth/facebook" %>
+		</p>
 		<% end %>
 	</div>
 </div>
@@ -37,3 +41,4 @@
 	“where you can stalk your friends, enemies, lovers, ex-lovers or just anyone else you like.”
 </div>
 </div>
+

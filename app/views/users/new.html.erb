@@ -15,25 +15,25 @@
 		<div class="column-onethird">
 			<%= form_for @user do |f| %>
 			<div>
-				<%= f.label :name %><br />
+				<%= f.label t :name %><br />
 				<%= f.text_field :name %>
 			</div>
 			<div>
-				<%= f.label :email %><br />
+				<%= f.label t :mail %><br />
 				<%= f.text_field :email %>
-			</div>
+		  </div>
+		  <div>
+		    <%= f.label t :password %><br />
+		    <%= f.password_field :password %>
+		  </div>
 			<div>
-				<%= f.label :password %><br />
-				<%= f.password_field :password %>
-			</div>
-			<div>
-				<%= f.label :password_confirmation %><br />
-				<%= f.password_field :password_confirmation %>
-			</div>
-			<div>
-				<%= f.submit "Sign up" %>
-			</div>
-			<% end %>
+		    <%= f.label t :password_confirmation %><br />
+		    <%= f.password_field :password_confirmation %>
+		  </div>
+		  <div>
+		    <%= f.submit t(:register) %>
+		  </div>
+		<% end %>
 		</div>
 		<div class="column-onethird-italic">
 			“We like you, don't be a dick.”
