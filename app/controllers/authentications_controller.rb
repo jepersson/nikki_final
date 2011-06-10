@@ -7,7 +7,7 @@ class AuthenticationsController < ApplicationController
 
     if authentication
       # Already registered user
-      flash[:info] = 'Signed in successfully!'
+      flash[:notice] = t :login_success
       sign_in_and_redirect(authentication.user)
     else
       # New user
@@ -17,7 +17,7 @@ class AuthenticationsController < ApplicationController
                                  :uid => omniauth['uid'])
       user.apply_omniauth(omniauth)
       if user.save
-        flash[:info] = 'New user created and signed in successfully!'
+        flash[:info] = t :user_created
         sign_in_and_redirect(user)
       else
         session[:omniauth] = omniauth.except('extra')
@@ -29,7 +29,6 @@ class AuthenticationsController < ApplicationController
   def destroy
     @authentication = current_user.authentications.find(params[:id])
     @authentication.destroy
-    flash[:notice] = 'Successfully remove authentication service.'
     redirect_to authentications_url
   end
 
@@ -41,6 +40,6 @@ class AuthenticationsController < ApplicationController
           UserSession.new(User.find_by_single_access_token(user.single_access_token))
         user_session.save
       end
-      redirect_to root_path
+      redirect_to posts_path
     end
 end

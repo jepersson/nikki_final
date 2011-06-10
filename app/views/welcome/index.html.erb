@@ -2,6 +2,12 @@
 	<div class="content-divider">
 		<div class="sub-menu-head">Latest Posts</div>
 	</div>
+	<% if flash[:notice] %>
+		<div class="flash-notice">
+			<%= t :observe %>:<br />
+			<%= flash[:notice] %>
+		</div>
+	<% end %>
 	<%= render 'posts/posts' %>
 	
 	<div id="static-border">
@@ -28,8 +34,8 @@
 					Sweden
 				</p>
 				<p>
-					Phone: +4672 732 1870<br />
-					Mail: <a href="mailto:bla@bla.se">seba@nikki.se</a>
+					<%= t :phone %> +4672 732 1870<br />
+					<%= t :mail %> <a href="mailto:bla@bla.se">seba@nikki.se</a>
 				</p>
 			</div>
 		</div>	

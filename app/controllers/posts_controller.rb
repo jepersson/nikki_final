@@ -2,26 +2,30 @@ class PostsController < ApplicationController
 
   def index
     if params[:search]
+      @title = t(:search)
       @posts = Post.title_like(params[:search]).
-                    paginate(:page => params[:page], :per_page => 9)
+        paginate(:page => params[:page], :per_page => 9)
       if @posts.empty?
         @posts = Post.content_like(params[:search]).
-                      paginate(:page => params[:page], :per_page => 9)
+          paginate(:page => params[:page], :per_page => 9)
         if @posts.empty?
           @message = t :no_posts_search
         end
       end
     elsif params[:view] == "my"
+      @title = t(:my_posts)
       @posts = current_user.posts.paginate(:page => params[:page], :per_page => 9)
       if @posts.empty?
         @message = t :no_posts_posted
       end
     elsif params[:view] == "stalking" or current_user != nil
+      @title = t(:stalking)
       @posts = current_user.following.collect{ |p| p.posts }.flatten.sort_by { |p| p.created_at }.reverse.paginate(:page => params[:page], :per_page => 9, :order => 'created_at DESC')
       if @posts.empty?
         @message = t :no_posts_stalking
       end
     else
+      @title = t(:all_posts)
       @posts = Post.paginate(:page => params[:page], :per_page => 9)
       if @posts.empty?
         @message = t :no_posts
@@ -44,24 +48,24 @@ class PostsController < ApplicationController
                                        :shadow => "../images/icons/gmap-icon-shadow.png",
                                        :icon_size => GSize.new(40,40),
                                        :shadow_size => GSize.new(64,51),
-                                       :icon_anchor => GPoint.new(18,55)), 
-                                       "icon_source")
-      icon_source = Variable.new('icon_source') 
+                                       :icon_anchor => GPoint.new(18,55)),
+                             "icon_source")
+      icon_source = Variable.new('icon_source')
       source = GMarker.new([res.lat,res.lng], :icon => icon_source)
       @map.overlay_init(source)
     end
   end
 
   def new
-    @title = "Create Post"
+    @title = t(:create_post)
     @post = Post.new
   end
 
   def create
     @post = current_user.posts.build(params[:post])
-   # @post.user = current_user
     if @post.save
       if params[:user]
+        flash[:notice] = t :post_created
         redirect_to posts_path(:view => "my")
       else
         render 'crop'
@@ -72,6 +76,7 @@ class PostsController < ApplicationController
   end
 
   def edit
+    @title = t(:edit_post)
     @post = Post.find(params[:id])
   end
 
@@ -85,6 +90,7 @@ class PostsController < ApplicationController
           render 'crop', :remote => true
         else
           if params[:post][:crop].blank?
+            flash[:notice] = t :post_updated
             redirect_to posts_path(:view => "my")
           else
             render 'crop', :remote => true

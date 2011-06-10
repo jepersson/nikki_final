@@ -13,23 +13,20 @@ class UsersController < ApplicationController
     else
       @users = User.paginate(:page => params[:page], :per_page => 9)
     end
-    
-    if @users.empty?
-      @message = t :no_users
-    end
   end
 
   def new
-    @title = "Sign up!"
+    @title = t(:registration)
     @user = User.new
   end
 
   def create
     @user = User.new(params[:user])
     if @user.save
+      flash[:notice] = t :user_created
       redirect_to users_path
     else
-      @title = "Sign up!"
+      @title = t(:registration)
       render 'new'
     end
   end
@@ -41,6 +38,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update_attributes(params[:user])
+      flash[:notice] = t :updated_user
       redirect_to @user
     else
       render 'edit'
@@ -51,36 +49,21 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     if params[:view] == "stalkers"
       @users = @user.followers.paginate(:page => params[:page], :per_page => 6)
-      if @users.empty? or @posts.empty?
-        @message = t :no_users
-      end
     elsif params[:view] == "stalking"
       @users = @user.following.paginate(:page => params[:page], :per_page => 6)
-      if @users.empty? or @posts.empty?
-        @message = t :no_users
-      end
     else
       @posts = @user.posts.paginate(:page => params[:page], :per_page => 6)
-      if @posts.empty? or @posts.empty?
-        @message = t :no_posts
-      end
     end
 
     if @user.position != nil
       res = Geokit::Geocoders::GoogleGeocoder.geocode(@user.position)
-      @map = GMap.new("post-location-" + @user.id.to_s)
+      @map = GMap.new("user-location-" + @user.id.to_s)
       @map.control_init(:large_map => true,
                         :map_type => true)
       @map.center_zoom_init([res.lat,res.lng],6)
-      @map.icon_global_init( GIcon.new(:image => @user.photo.url(:mini),
-                                       :shadow => "../images/icons/gmap-icon-shadow.png",
-                                       :icon_size => GSize.new(40,40),
-                                       :shadow_size => GSize.new(64,51),
-                                       :icon_anchor => GPoint.new(18,55)), 
-                                       "icon_source")
-      icon_source = Variable.new('icon_source') 
-      source = GMarker.new([res.lat,res.lng], :icon => icon_source)
-      @map.overlay_init(source)
+      @map.overlay_init(GMarker.new([res.lat,res.lng],:title => @user.name,
+                                    :info_window => @user.name))
     end
   end
+
 end

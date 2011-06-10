@@ -1,7 +1,7 @@
 Nikki::Application.routes.draw do
 
   resources :users, :posts, :comments, :relations, :user_sessions
-  resources  :account, :authentications, :welcome, :controller => "users"
+  resources :authentications, :welcome
 
   root :to => 'welcome#index'
 

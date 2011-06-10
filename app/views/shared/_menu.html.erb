@@ -7,19 +7,19 @@
 		<li id="space">
 			<% form_tag users_path, :method => 'get' do %>
 				<%= text_field_tag :search %>
-				<%= submit_tag "Search", :id => "submit" %>
+				<%= submit_tag t(:search), :id => "submit" %>
 			<% end %>
 		</li>
 		<li id="logout"><%= link_to "", signout_path %></li>
 	</ul>
 <% else %>
 	<ul id="menu">
-		<li id="index"><%= link_to "" %></li>
+		<li id="index"><%= link_to "", welcome_index_path %></li>
 		<li id="feed"><%= link_to "", posts_path %></li>
 		<li id="long-space">
 			<% form_tag users_path, :method => 'get' do %>
 				<%= text_field_tag :search %>
-				<%= submit_tag "Search", :id => "submit" %>
+				<%= submit_tag t(:search), :id => "submit" %>
 			<% end %>
 		</li>
 		<li id="login"><%= link_to "", signin_path %></a></li>

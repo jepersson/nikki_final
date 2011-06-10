@@ -1,34 +1,39 @@
 <%= error_messages_for @user_session %>
 
 <% if flash[:notice] %>
-	<div class="flash-notice">
-		<%= t :observe %>:<br />
-		<%= flash[:notice] %>
-	</div>
+<div class="flash-notice">
+<%= t :observe %>:<br />
+<%= flash[:notice] %>
+</div>
 <% end %>
 
 <div class="user-information">
-	<div class="user-information-head">Not a user yet?</div>
-	<div class="user-content">
-		<p>don't feel down, sign up <%= link_to "here", signup_path %> instead and enjoy the full power of our awesome service where you can stalk your friends, enemies, lovers, ex-lovers or anyone you like.</p><p>Feel your fingers tremble as you write your first post, as you stalk your first pray and make your first comment on that hot girl's photo you saw in school that one time and hasn't had the courage to talk to since.</p><p>You can do all that here, with us.</p><p>Enjoy.</p>
+<div class="user-information-head">Not a user yet?</div>
+<div class="user-content">
+<p>don't feel down, sign up <%= link_to "here", signup_path %> instead and enjoy the full power of our awesome service where you can stalk your friends, enemies, lovers, ex-lovers or anyone you like.</p><p>Feel your fingers tremble as you write your first post, as you stalk your first pray and make your first comment on that hot girl's photo you saw in school that one time and hasn't had the courage to talk to since.</p><p>You can do all that here, with us.</p><p>Enjoy.</p>
 	</div>
 </div>
 <div class="post-frame">
-	<div class="post-head">Sign in</div>
+	<div class="post-head"><%= t :login %></div>
 	<div class="post-content">
 		<% form_for @user_session do |f| %>
 			<div>
-				<%= f.label :email %><br />
+				<%= f.label t :mail %><br />
 				<%= f.text_field :email %>
 			</div>
 		  	<div>
-		  		<%= f.label :password %><br />
+		  		<%= f.label t :password %><br />
 				<%= f.password_field :password %>
 		  	</div>
 			<div>
-				<%= f.submit "Sign in" %>
+				<%= f.submit t :login %>
 			</div>	
-			<p>Or sign in with Facebook <%= link_to "here.", "/auth/facebook" %></p>
+			<p>
+			  <%= t :login_oauth %>:
+			</p>
+			<p> 
+			  <%= link_to image_tag( "../images/fb-ikon.jpg"), "/auth/facebook" %>
+			</p>
 		<% end %>
 	</div>
 </div>
