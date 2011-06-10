@@ -4,7 +4,7 @@
 		<div class="user-information">
 			<div class="user-information-head"><%= @user.name %></div>
 			<div class="post-content">
-				<% if @user.intro != nil %>
+				<% unless @user.intro.blank? %>
 					<%= @user.intro %>
 				<% else %>
 					Nothing yet. I would have written something if i was not so lazy.
@@ -32,7 +32,7 @@
 			 	:rel => "lightbox", :title => @user.name %>
 		</div>
 		
-		<% if @user.position != nil %>
+		<% unless @user.position.blank? %>
 			<div class="user-frame">
 				<%= raw @map.div(:width => 300, :height => 400) %>
 				<%= raw @map.to_html(:no_load => true) %>

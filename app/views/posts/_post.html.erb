@@ -41,7 +41,7 @@
 			</div>
 
 	<% when "map" %>
-		<% if @post.position != nil %>
+		<% unless @post.position.blank? %>
 			<%= raw @map.div(:width => 300, :height => 400) %>
 			<%= raw @map.to_html(:no_load => true) %>
 		<% else %>

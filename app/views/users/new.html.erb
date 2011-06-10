@@ -1,9 +1,8 @@
 
-<% if flash[:notice] or error_messages_for @user %>
+<% if flash[:notice] %>
 <div class="flash-notice">
 	<%= t :observe %>:<br />
 	<%= flash[:notice] %>
-	<%= error_messages_for @user %>
 </div>
 <% end %>
 

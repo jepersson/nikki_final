@@ -1,9 +1,8 @@
 <div id="content-border">
-<% if flash[:notice] or error_messages_for @user_session %>
+<% if flash[:notice] %>
 <div class="flash-notice">
 	<%= t :observe %>:<br />
 	<%= flash[:notice] %><br />
-	<%= error_messages_for @user_session %>
 </div>
 <% end %>
 
@@ -15,27 +14,7 @@
 </div>
 <div class="post-frame">
 	<div class="post-head"><%= t :login %></div>
-	<div class="post-content">
-		<% form_for @user_session do |f| %>
-		<div>
-			<%= f.label t :mail %><br />
-			<%= f.text_field :email %>
-		</div>
-		<div>
-			<%= f.label t :password %><br />
-			<%= f.password_field :password %>
-		</div>
-		<div>
-			<%= f.submit t :login %>
-		</div>	
-		<p>
-			<%= t :login_oauth %>:
-		</p>
-		<p> 
-			<%= link_to image_tag( "../images/fb-ikon.jpg"), "/auth/facebook" %>
-		</p>
-		<% end %>
-	</div>
+	<%= render 'login' %>
 </div>
 <div class="login-onethird-italic">
 	“where you can stalk your friends, enemies, lovers, ex-lovers or just anyone else you like.”

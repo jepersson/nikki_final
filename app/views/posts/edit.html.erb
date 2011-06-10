@@ -1,10 +1,9 @@
 
 <div id="content-border">
-	<% if flash[:notice] or error_messages_for @post %>
+	<% if flash[:notice] %>
 		<div class="flash-notice">
 			<%= t :observe %>:<br />
 			<%= flash[:notice] %>
-			<%= error_messages_for @post %>
 		</div>
 	<% end %>
 	<% if @message %>
