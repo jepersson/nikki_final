@@ -3,6 +3,3 @@
 
 ENV['COSTUMER_KEY'] = ''
 ENV['COSTUMER_SECRET'] = ''
-
-# Corresponding keys for google maps API
-
