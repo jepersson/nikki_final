@@ -10,11 +10,11 @@ class UsersController < ApplicationController
     else
       @users = User.paginate(:page => params[:page], :per_page => 9)
     end
-    
+
     if @users.empty?
       @message = t :no_users
     end
-    
+
     respond_to do |format|
       format.html
       format.js {
@@ -84,17 +84,24 @@ class UsersController < ApplicationController
     elsif params[:view] == "user_posts"
       @posts = @user.posts.paginate(:page => params[:page], :per_page => 6)
     end
-    
+
     if @user.position != nil
       res = Geokit::Geocoders::GoogleGeocoder.geocode(@user.position)
-      @map = GMap.new("user-location-" + @user.id.to_s)
+      @map = GMap.new("post-location-" + @user.id.to_s)
       @map.control_init(:large_map => true,
                         :map_type => true)
       @map.center_zoom_init([res.lat,res.lng],6)
-      @map.overlay_init(GMarker.new([res.lat,res.lng],:title => @user.name,
-                                    :info_window => @user.name))
+      @map.icon_global_init( GIcon.new(:image => @user.photo.url(:mini),
+                                       :shadow => "../images/icons/gmap-icon-shadow.png",
+                                       :icon_size => GSize.new(40,40),
+                                       :shadow_size => GSize.new(64,51),
+                                       :icon_anchor => GPoint.new(18,55)),
+                             "icon_source")
+      icon_source = Variable.new('icon_source')
+      source = GMarker.new([res.lat,res.lng], :icon => icon_source)
+      @map.overlay_init(source)
     end
-    
+
     if params[:view] == "user_stalking" or params[:view] == "user_posts" or params[:view] == "user_stalkers"
       respond_to do |format|
         format.html
