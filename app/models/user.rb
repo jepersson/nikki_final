@@ -1,8 +1,4 @@
 class User < ActiveRecord::Base
-  attr_accessible :name, :location, :intro, :email, :photo, :x1, :y1, :width, :height, :position
-  attr_accessor :x1, :y1, :width, :height
-  after_update :reprocess_photo, :if => :cropping?
-
   acts_as_authentic do |c|
     c.merge_validates_length_of_password_field_options({ :unless => :authenticated? })
     c.merge_validates_length_of_password_confirmation_field_options({ :unless => :authenticated? })
@@ -12,6 +8,11 @@ class User < ActiveRecord::Base
   def authenticated?
     self.authentications.any?
   end
+
+  attr_accessible :name, :location, :intro, :email, :photo,
+    :x1, :y1, :width, :height, :position, :password, :password_confirmation
+  attr_accessor :x1, :y1, :width, :height
+  after_update :reprocess_photo, :if => :cropping?
 
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 

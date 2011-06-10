@@ -1,13 +1,10 @@
 # Sample localization file for English. Add more files in this directory for other locales.
 # See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
-en:
-
-  
-  
+en: 
 # Welcome
-  welcome: "Welcome"
   phone: "Phone"
+  welcome: "Welcome"
   mail: "Mail"
   
 # Footer
@@ -47,7 +44,6 @@ en:
   crop: "Crop"
   copy_text_create_post_left: ""
   copy_text_create_post_right: ""
-  post_created: "Your post was created without problems."
   
 # Index Post
   search: "Search"
@@ -62,19 +58,19 @@ en:
 # New User
   registration: "Registration"
   register: "Register"
-  user_created: "Registration successful. Welcome!"
   
 # Show User
   member_since: "Member since"
   stalk: "Stalk"
   unstalk: "Unstalk"
+  all_users: "All users"
   
 # Edit User
   edit: "Edit"
   name: "Name"
   intro: "Introduction"
   password_confirmation: "Password confirmation"
-  update_user: "Your information was saved successfully."
+  updated_user: "Your information was saved successfully."
 
 # New Session
   login: "Login"
@@ -87,3 +83,7 @@ en:
   
 # Comments
   login_to_post_a_comment: "to post a comment"
+  comment: "Comment"
+  
+# stalking
+  no_posts_stalking: "The people you stalk have no posts."

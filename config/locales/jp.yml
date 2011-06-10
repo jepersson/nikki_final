@@ -1,6 +1,86 @@
 jp:
-  welcome: "ようこそ"
   
+# Welcome
+  welcome: "ようこそ"
+  phone: "電話"
+  mail: "メール"
+
+# Footer
   about: "について"
   help: "案内"
-  contect: "コンタクト"
+  contact: "コンタクト"
+
+  languages: "言語"
+  copyright: "Copyright"
+  links: "リンク"
+
+# Submenu
+  search_post: ""
+  latest_post: ""
+  stalkers: "ストーカー"
+
+  feeds: "フィード"
+  posts: "ポスト"
+  users: "ユーザ"
+  page: "ページ"
+
+# Flashes
+  observe: "注意"
+  error: "エラー"
+
+# Messages 
+  message: "記入してください"
+  no_posts: "ポストがありませんでした"
+  no_users: "ユーザがありませんでした"
+
+# New Post
+  create_post: "クリエイト"
+  edit_post: "ポストをエディト"
+  title: "タイトル"
+  content: "内容"
+  location: "場所"
+  crop: "クロップ"
+  copy_text_create_post_left: ""
+  copy_text_create_post_right: ""
+  post_created: "ポストをクリエイトしました"
+
+# Index Post
+  search: "探索"
+  my_posts: "私のポスト"
+  stalking: "尾行してる"
+  all_posts: "全てのポスト"
+  delete: "ディレート"
+
+# Edit Post
+  post_updated: "ポストの記録は成功でした"
+
+# New User
+  registration: "登録"
+  register: "登録する"
+  user_created: "登録は成功でした。よこそ！"
+
+# Show User
+  member_since: "登録した時"
+  stalk: "尾行"
+  unstalk: "不尾行"
+  all_users: "全てのユーザ"
+
+# Edit User
+  edit: "エディット"
+  name: "名前"
+  intro: "紹介"
+  password_confirmation: "パスワードの確認"
+  update_user: "情報がちゃんと記録でした"
+
+# New Session
+  login: "ログイン"
+  login_oauth: "「Oauth」で"
+  password: "パスワード"
+  login_success: "ログインは成功でした!"
+
+# Destroy User
+  logout_success: "ログアウトしました"
+
+# Comments
+  login_to_post_a_comment: "はコメントを出す為に必要です"
+  comment: "コメント"

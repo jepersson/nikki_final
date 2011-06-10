@@ -24,7 +24,7 @@
 					<%= form_for (@comment, :remote => true) do |f| %>
 						<%= f.text_field :content %>
 						<%= f.hidden_field :post_id, :value => @post.id %>
-						<%= f.submit "Comment"  %>
+						<%= f.submit t(:comment)  %>
 					<% end %>
 				<% else %>
 					<%= link_to "Login", new_user_session_path %> 
