@@ -1,18 +1,20 @@
 Nikki::Application.routes.draw do
 
   resources :users, :posts, :comments, :relations, :user_sessions
-  resources :account, :welcome, :controller => "users"
+  resources  :account, :authentications, :welcome, :controller => "users"
 
   root :to => 'welcome#index'
-  
+
+  match '/auth/:provider/callback' => 'authentications#create'
+
   match '/signup' => 'users#new'
   match '/signout' => 'user_sessions#destroy'
   match '/signin' => 'user_sessions#new'
-  
-  match '/about' => 'high_voltage/pages#show', :id => 'about'  
+
+  match '/about' => 'high_voltage/pages#show', :id => 'about'
   match '/contact' => 'high_voltage/pages#show', :id => 'contact'
   match '/help' => 'high_voltage/pages#show', :id => 'help'
-  
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

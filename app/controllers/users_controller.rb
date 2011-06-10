@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
   def index
-   if params[:search]
+    if params[:search]
       @users = User.name_like(params[:search]).
-                    paginate(:page => params[:page], :per_page => 9)
+        paginate(:page => params[:page], :per_page => 9)
       if @users.empty?
         redirect_to posts_path(:search => params[:search])
       end
@@ -18,12 +18,12 @@ class UsersController < ApplicationController
       @message = t :no_users
     end
   end
-  
+
   def new
     @title = "Sign up!"
     @user = User.new
   end
-  
+
   def create
     @user = User.new(params[:user])
     if @user.save
@@ -33,11 +33,11 @@ class UsersController < ApplicationController
       render 'new'
     end
   end
-  
+
   def edit
     @user = User.find(params[:id])
   end
-  
+
   def update
     @user = User.find(params[:id])
     if @user.update_attributes(params[:user])
@@ -46,7 +46,7 @@ class UsersController < ApplicationController
       render 'edit'
     end
   end
-  
+
   def show
     @user = User.find(params[:id])
     if params[:view] == "stalkers"
@@ -65,9 +65,7 @@ class UsersController < ApplicationController
         @message = t :no_posts
       end
     end
-    
-    
-    
+
     if @user.position != nil
       res = Geokit::Geocoders::GoogleGeocoder.geocode(@user.position)
       @map = GMap.new("post-location-" + @user.id.to_s)
@@ -85,6 +83,4 @@ class UsersController < ApplicationController
       @map.overlay_init(source)
     end
   end
-  
-  
 end

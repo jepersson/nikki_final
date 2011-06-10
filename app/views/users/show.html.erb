@@ -13,10 +13,17 @@
 			<div class="user-bottom">
 				<% if current_user != nil %>
 					<% if @user.id == current_user.id %>
-						<div class="user-bottom-link"><%= link_to "edit", edit_user_path(@user) %></div>
-						<div class="user-bottom-link"><div id="stalk_form"><%= render 'stalk_form' if current_user != nil %></div></div>
-					<% end %>
-				<% end %>
+						<div class="user-bottom-link">
+						  <%= link_to "edit", edit_user_path(@user) %>
+						</div>
+					<% else%>
+				<div class="user-bottom-link">
+				  <div id="stalk_form">	
+				    <%= render 'stalk_form' %>
+				  </div>
+			  </div>
+			  <% end %>			
+			<% end %>
 			</div>
 		</div>
 		

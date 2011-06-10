@@ -17,19 +17,19 @@ def make_users
                  :intro => 'Hej du glade galosch!',
                  :position => "Tokyo",
                  :password => 'password',
-                 :password_confirmation => 'password')          
-    99.times do |n|
-      name = Faker::Name.name
-      email = "example-#{n+1}@gmail.com"
-      intro = Faker::Lorem.sentence(15)
-      password = "password-#{n+1}"
-      position = "Stockholm"
-      User.create!(:name => name,
-                   :email => email,
-                   :intro => intro,
-                   :position => position,
-                   :password => password,
-                   :password_confirmation => password)
+                 :password_confirmation => 'password')
+  99.times do |n|
+    name = Faker::Name.name
+    email = "example-#{n+1}@gmail.com"
+    intro = Faker::Lorem.sentence(15)
+    password = "password-#{n+1}"
+    position = "Stockholm"
+    User.create!(:name => name,
+                 :email => email,
+                 :intro => intro,
+                 :position => position,
+                 :password => password,
+                 :password_confirmation => password)
   end
 end  
 
