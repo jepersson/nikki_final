@@ -1,1 +1,7 @@
-Nothing of interest right now...
+This is a project developed for the sake of one of our programming courses at Lith so it might not be of that much public interest. However if you would like to clone and try our website out at 127.0.0.1:3000 you just need to do these easy steps:
+
+1. Be sure you have installed Imagemagick, Ruby 1.8.7 and rails 3.0.7.
+2. clone this repository to your folder of choice.
+3. Insert your own keys for facebook authentication inside ROOT/config/initializers/omniauth.rb
+4. Run 'rake db:schema:load followed by 'rails s' in your terminal.
+5. Visit 127.0.0.1:3000 for profit!
