@@ -35,6 +35,7 @@ class User < ActiveRecord::Base
 
   has_attached_file :photo,
   :styles => {
+    :mini => "40x40#"
     :small => { :geometry => "300x400#",
                 :processors => [:cropper] },
   :original => "1024x600>" },
