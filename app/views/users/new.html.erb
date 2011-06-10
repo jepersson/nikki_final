@@ -1,9 +1,9 @@
-<%= error_messages_for @user %>
+
 <% if flash[:notice] %>
-	<div class="flash-notice">
-		<%= t :observe %>:<br />
-		<%= flash[:notice] %>
-	</div>
+<div class="flash-notice">
+	<%= t :observe %>:<br />
+	<%= flash[:notice] %>
+</div>
 <% end %>
 
 <div id="static-border">	
@@ -12,7 +12,7 @@
 	</div>
 	<div id="static-mid">
 		<div class="column-onethird">
-		<%= form_for @user do |f| %>
+			<%= form_for @user do |f| %>
 			<div>
 				<%= f.label t :name %><br />
 				<%= f.text_field :name %>

@@ -2,7 +2,7 @@
 	<div id="post-small-id-<%= post.id %>" class="post-frame-small">
 		<%= link_to_function image_tag( post.photo(:small), :border => 0), "$$('div.post-border').each(Element.hide); $$('div.post-frame-small').each(Element.show); $('post-id-" + post.id.to_s + "').show(); $('post-small-id-" + post.id.to_s + "').hide();" %>
 		<div class="post-headline"><%= post.title %></div>
-		<div class="post-user"><%= link_to post.user.name, user_path(:id => post.user.id) %></div>
+		<div class="post-user"><%= link_to post.user.name, user_path(:id => post.user.id, :view => "user_posts") %></div>
 	</div>
 
 	<div id="post-id-<%= post.id %>" class="post-border" style="display: none;">

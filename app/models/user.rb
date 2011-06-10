@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+
   acts_as_authentic do |c|
     c.merge_validates_length_of_password_field_options({ :unless => :authenticated? })
     c.merge_validates_length_of_password_confirmation_field_options({ :unless => :authenticated? })

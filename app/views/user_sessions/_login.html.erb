@@ -1,0 +1,21 @@
+<div class="post-content">
+	<% form_for @user_session do |f| %>
+	<div>
+		<%= f.label t :mail %><br />
+		<%= f.text_field :email %>
+	</div>
+	<div>
+		<%= f.label t :password %><br />
+		<%= f.password_field :password %>
+	</div>
+	<div>
+		<%= f.submit t :login %>
+	</div>	
+	<p>
+		<%= t :login_oauth %>:
+	</p>
+	<p> 
+		<%= link_to image_tag( "../images/fb-ikon.jpg"), "/auth/facebook" %>
+	</p>
+	<% end %>
+</div>

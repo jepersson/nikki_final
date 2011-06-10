@@ -73,23 +73,24 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     if params[:view] == "user_stalkers"
       @users = @user.followers.paginate(:page => params[:page], :per_page => 6)
-      if @users.empty? or @posts.empty?
+      if @users.empty?
         @message = t :no_users
       end
     elsif params[:view] == "user_stalking"
       @users = @user.following.paginate(:page => params[:page], :per_page => 6)
-      if @users.empty? or @posts.empty?
+      if @users.empty?
         @message = t :no_users
       end
     elsif params[:view] == "user_posts"
       @posts = @user.posts.paginate(:page => params[:page], :per_page => 6)
+      if @posts.empty?
+        @message = t :no_posts
+      end
     end
 
-    if @user.position != nil
+    if @user.position
       res = Geokit::Geocoders::GoogleGeocoder.geocode(@user.position)
       @map = GMap.new("post-location-" + @user.id.to_s)
-      @map.control_init(:large_map => true,
-                        :map_type => true)
       @map.center_zoom_init([res.lat,res.lng],6)
       @map.icon_global_init( GIcon.new(:image => @user.photo.url(:mini),
                                        :shadow => "../images/icons/gmap-icon-shadow.png",

@@ -6,7 +6,7 @@
 		<div class="user-head"><%= @user.name %></div>
 		<div class="user-content"><%= @user.intro %></div>
 	<% when "map" %>
-		<% if @user.position != nil %>
+		<% unless @user.position.blank? %>
 			<%= raw @map.div(:width => 300, :height => 400) %>
 			<%= raw @map.to_html(:no_load => true) %>
 		<% else %>
