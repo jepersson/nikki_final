@@ -35,11 +35,11 @@ class User < ActiveRecord::Base
 
   has_attached_file :photo,
   :styles => {
-    :mini => "40x40#"
+    :mini => "40x40#",
     :small => { :geometry => "300x400#",
                 :processors => [:cropper] },
   :original => "1024x600>" },
-    :default_url => "../images/b.jpg"
+    :default_url => "../images/no-user.jpg"
 
   def following?(followed)
     self.relations.find_by_followed_id(followed)

@@ -27,7 +27,6 @@ class PostsController < ApplicationController
         @message = t :no_posts
       end
     end
-    
   end
 
   def show
@@ -41,7 +40,7 @@ class PostsController < ApplicationController
       @map.control_init(:large_map => true,
                         :map_type => true)
       @map.center_zoom_init([res.lat,res.lng],8)
-      @map.icon_global_init( GIcon.new(:image => "../images/user/seba-small.png",
+      @map.icon_global_init( GIcon.new(:image => @post.user.photo.url(:mini),
                                        :shadow => "../images/icons/gmap-icon-shadow.png",
                                        :icon_size => GSize.new(40,40),
                                        :shadow_size => GSize.new(64,51),

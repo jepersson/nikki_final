@@ -17,8 +17,7 @@ class Post < ActiveRecord::Base
   :styles => {
     :small => { :geometry => "300x400#",
                 :processors => [:cropper] },
-  :original => "1024x600>" },
-    :default_url => "../images/b.jpg"
+  :original => "1024x600>" }
 
   default_scope :order => 'posts.created_at DESC'
 
