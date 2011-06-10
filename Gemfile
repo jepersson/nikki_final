@@ -16,6 +16,7 @@ gem 'rd_searchlogic', :require => 'searchlogic',
 											:git => 'git://github.com/railsdog/searchlogic.git'
 						
 
+gem 'ruby-openid'
 gem 'geokit'
 
 group :development do

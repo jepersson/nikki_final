@@ -1,4 +1,11 @@
 <%= error_messages_for @user %>
+<% if flash[:notice] %>
+	<div class="flash-notice">
+		<%= t :observe %>:<br />
+		<%= flash[:notice] %>
+	</div>
+<% end %>
+
 <div id="static-border">	
 	<div id="static-head">
 		<h1>Register</h1>

@@ -3,20 +3,20 @@
 		<div class="sub-menu-head">Latest Posts</div>
 	</div>
 	<%= render 'posts/posts' %>
-	</div>
+	
 	<div id="static-border">
 		<div id="static-head">
-			<h1>Welcome</h1>
+			<h1><%= t :welcome %></h1>
 		</div>
 		<div id="static-mid">
 			<div class="column-onethird">
-				Mango
+				<%= t :welcome_content %>
 			</div>
 			<div class="column-onethird-italic">
-				Nullam felis orci, semper in consectetur non, rutrum at est. Sed justo lorem, aliquam nec accumsan eget, tempus at enim.
+				<%= t :welcome_quote %>
 			</div>
 			<div class="column-onethird-headline">
-				Adress:
+				<%= t :welcome_login %>
 			</div>
 			<div class="column-onethird">
 				<p>
@@ -36,3 +36,4 @@
 		<div id="static-tail">
 		</div>	
 	</div>
+</div>

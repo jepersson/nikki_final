@@ -1,8 +1,21 @@
+
 <div id="content-border">
 	<div class="content-divider">
 		<%= render 'shared/submenu' %>
 		<div class="pagination-page">Page:</div>
 		<%= will_paginate @users, :prev_label => '<', :next_label => '>' %>
 	</div>
+	<% if flash[:notice] %>
+		<div class="flash-notice">
+			<%= t :observe %>:<br />
+			<%= flash[:notice] %>
+		</div>
+	<% end %>
+	<% if @message %>
+		<div class="message">
+			<%= t :message %>:<br />
+			<%= @message %>
+		</div>
+	<% end %>
 <%= render 'users' %>
 </div>

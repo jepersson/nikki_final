@@ -1,17 +1,18 @@
 <div id="content-border">
-<%= image_tag @post.photo.url(:original), 
-              :alt => "cropbox", 
-              :id => "cropbox",
- 							:size => "768x450" %>
+<div id="crop-image-outer-border">
+	<div id="crop-image-border"><%= image_tag @post.photo.url(:original), 
+              													:alt => "cropbox", 
+              													:id => "cropbox" %>
+	</div>
+	<div class="crop-bottom">
+		<%= form_for @post do |f| %>
+			<% for attribute in [:x1, :y1, :width, :height] %>
+				<%= f.hidden_field attribute, :id => attribute %>
+			<% end %>
+			<%= f.submit "Crop" %>
+		<% end %>
+	</div>
 </div>
-
-<%= form_for @post do |f| %>
-	<% for attribute in [:x1, :y1, :width, :height] %>
-		<%= f.hidden_field attribute, :id => attribute %>
-	<% end %>
-	<%= f.submit "Crop" %>
-<% end %>
-
 <script type="text/javascript" charset="utf-8">
 
 function onEndCrop( coords, dimensions ) {
@@ -19,10 +20,11 @@ function onEndCrop( coords, dimensions ) {
     $( 'x1' ).value = coords.x1 * ratio;
     $( 'y1' ).value = coords.y1 * ratio;
     $( 'width' ).value = dimensions.width * ratio;
-    $( 'height' ).value = dimensions.height * ratio;
-}
+    $( 'height' ).value = dimensions.height * ratio;}
 
 Event.observe( window, 'load', function() {
+	$('crop-image-border').setStyle({width: '' + $('cropbox').getWidth() + 'px'});
+	$('crop-image-outer-border').setStyle({width: '' + $('crop-image-border').getWidth() + 'px'});
 	new Cropper.ImgWithPreview(
 		'cropbox',
 		{ 

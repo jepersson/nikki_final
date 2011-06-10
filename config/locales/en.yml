@@ -2,4 +2,37 @@
 # See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  hello: "Hello world"
+  welcome: "Welcome"
+  
+# Footer
+  about: "About"
+  help: "Help"
+  contect: "Contact"
+
+  language: ""
+  copyright: ""
+  links: ""
+
+# Submenu
+  search_post: ""
+  latest_post: ""
+  
+  posts: ""
+  users: ""
+  page: ""
+  
+# Flashes
+  observe: "Observe"
+  
+
+# Messages 
+  message: "Please note"
+  no_posts: "No posts to show my good sir."
+  no_users: "No users to show my good sir."
+  
+# Create post
+  title: ""
+  content: ""
+  location: ""
+  copy_text_create_post_left: ""
+  copy_text_create_post_right: ""

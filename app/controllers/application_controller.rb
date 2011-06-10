@@ -2,7 +2,13 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
 
   helper_method :current_user_session, :current_user
-
+  
+  before_filter :set_locale
+  
+  def set_locale
+    I18n.locale = params[:locale] || I18n.default_locale
+  end
+  
   private
     def current_user_session
       return @current_user_session if defined?(@current_user_session)

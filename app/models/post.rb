@@ -3,6 +3,12 @@ class Post < ActiveRecord::Base
   attr_accessor :x1, :y1, :width, :height
   after_update :reprocess_photo, :if => :cropping?                      
   
+  acts_as_mappable :default_units => :kms, 
+                   :default_formula => :sphere, 
+                   :distance_field_name => :distance,
+                   :lat_column_name => :lat,
+                   :lng_column_name => :lng
+  
   validates :title, :presence => true,
                     :length => { :maximum => 50 }
   validates :content, :presence => true,

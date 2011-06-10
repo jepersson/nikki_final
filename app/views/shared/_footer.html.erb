@@ -2,10 +2,10 @@
 	<div id="languages">
 		<ul>
 			<div class="footer-title">Languages:</div>
-			<li><%= link_to "Svenska", about_path %></li>
-			<li><%= link_to "English", about_path %></li>
-			<li><%= link_to "日本語", about_path %></li>
-			<li><%= link_to "한국어", about_path %></li>
+			<li><%= link_to "Svenska", url_for( :locale => 'se' ) %></li>
+			<li><%= link_to "English", url_for( :locale => 'en' ) %></li>
+			<li><%= link_to "日本語", url_for( :locale => 'jp' ) %></li>
+			<li><%= link_to "한국어", url_for( :locale => 'kr' ) %></li>
 		</ul>
 	</div>
 	<div id="copyright">
@@ -14,9 +14,9 @@
 	<div id="links">
 		<ul>
 			<div class="footer-title">Links:</div>
-			<li><%= link_to "About", about_path %></li>
-			<li><%= link_to "Help", help_path %></li>
-			<li><%= link_to "Contact", contact_path %></li>
+			<li><%= link_to t( :about ), about_path %></li>
+			<li><%= link_to t( :help ), help_path %></li>
+			<li><%= link_to t( :contact ), contact_path %></li>
 		</ul>
 	</div>
 </div>

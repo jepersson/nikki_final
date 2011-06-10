@@ -13,7 +13,7 @@
 			<div class="post-bottom">
 				<% if current_user != nil %>
 					<% if post.user_id == current_user.id %>
-						<div class="post-bottom-link"><%= link_to "Edit", post, :method => :edit %></div>
+						<div class="post-bottom-link"><%= link_to "Edit", edit_post_path(@post) %></div>
 						<div class="post-bottom-link"><%= link_to "Delete", post, :method => :delete %></div>
 					<% end %>
 				<% end %>

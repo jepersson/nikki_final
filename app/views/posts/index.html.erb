@@ -1,12 +1,23 @@
+
 <div id="content-border">
+
 	<div class="content-divider">
 		<%= render 'shared/submenu' %>
 		<div class="pagination-page">Page:</div>
 		<%= will_paginate @posts, :prev_label => '<', :next_label => '>' %>
 	</div>
-<% if @posts.empty? %>
-	No posts, sorry dude.
-<% else %>
+	<% if flash[:notice] %>
+		<div class="flash-notice">
+			<%= t :observe %>:<br />
+			<%= flash[:notice] %>
+		</div>
+	<% end %>
+	<% if @message %>
+		<div class="message">
+			<%= t :message %>:<br />
+			<%= @message %>
+		</div>
+	<% end %>
+	
 	<%= render 'posts' %>
-<% end %>
 </div>

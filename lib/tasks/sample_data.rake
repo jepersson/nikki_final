@@ -12,32 +12,31 @@ namespace :db do
 end
 
 def make_users
-  99.times do |n|
     User.create!(:name => 'Example',
                  :email => 'example@gmail.com',
                  :intro => 'Hej du glade galosch!',
-                 :position => "Tokyo"
+                 :position => "Tokyo",
                  :password => 'password',
-                 :password_confirmation => 'password')
-  9.times do |n|
-    name = Faker::Name.name
-    email = "example-#{n+1}@gmail.com"
-    intro = Faker::Lorem.sentence(15)
-    password = "password-#{n+1}"
-    position = "Stockholm"
-    User.create!(:name => name,
-                 :email => email,
-                 :intro => intro,
-                 :position => position,
-                 :password => password,
-                 :password_confirmation => password)
+                 :password_confirmation => 'password')          
+    99.times do |n|
+      name = Faker::Name.name
+      email = "example-#{n+1}@gmail.com"
+      intro = Faker::Lorem.sentence(15)
+      password = "password-#{n+1}"
+      position = "Stockholm"
+      User.create!(:name => name,
+                   :email => email,
+                   :intro => intro,
+                   :position => position,
+                   :password => password,
+                   :password_confirmation => password)
   end
 end  
 
 def make_posts
   User.all(:limit => 9).each do |user|
     99.times do
-      title = Faker::Lorem.sentence(1)
+      title = Faker::Lorem.words(2)
       content = Faker::Lorem.sentence(10)
       position = "Tokyo"
       user.posts.create!(:title => title, 

@@ -1,29 +1,46 @@
 <%= error_messages_for @post %>
-<div class="column-onethird">
-<div id="post-id-<%= @post.id %>" class="post-border">
-<div class="post-menu-border">
-	<ul id="post-menu">
-		<li id="photo"></li>
-		<li id="post"></li>
-		<li id="comment"></li>
-		<li id="location"></a></li>
-	</ul>
-</div>
-
-<div id="content-id-<%= @post.id.to_s %>" class="post-frame">
-	<% form_for @post, :html => { :multipart => true } do |f| %>
-		<div>
-			<%= f.label :title %><br />
-			<%= f.text_field :title %>
+<div id="content-border">
+	<% if flash[:notice] %>
+		<div class="flash-notice">
+			<%= t :observe %>:<br />
+			<%= flash[:notice] %>
 		</div>
-		<div>
-			<%= f.label :content %><br />
-			<%= f.text_area :content %>
-		</div>
-		<div>
-			<%= f.file_field :photo %>
-		</div>
-		<%= f.submit %>
 	<% end %>
-</div>
+	<% if @message %>
+		<div class="message">
+			<%= t :message %>:<br />
+			<%= @message %>
+		</div>
+	<% end %>
+	
+	<div class="login-onethird-italic">
+		“Create a post! Be happy! Love your frinds and hug your mom”
+	</div>
+	<div id="content-id-<%= @post.id.to_s %>" class="post-frame">
+		<div class="create-post-content">
+			<% form_for @post, :html => { :multipart => true } do |f| %>
+				<div>
+					<%= f.label :title %><br />
+					<%= f.text_field :title %>
+				</div>
+				<div>
+					<%= f.label :content %><br />
+					<%= f.text_area :content %>
+				</div>
+				<div>
+					<%= f.label :position %><br />
+					<%= f.text_field :position %>
+				</div>
+				<div>
+					<%= f.file_field :photo %>
+				</div>
+				<div>
+					<%= f.submit %>
+				</div>
+			<% end %>
+		</div>
+	</div>
+	<div class="login-onethird-italic">
+		“where you can stalk your friends, enemies, lovers, ex-lovers or just anyone else you like.”
+	</div>
 </div>

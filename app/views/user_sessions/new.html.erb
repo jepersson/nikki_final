@@ -1,4 +1,12 @@
 <%= error_messages_for @user_session %>
+
+<% if flash[:notice] %>
+	<div class="flash-notice">
+		<%= t :observe %>:<br />
+		<%= flash[:notice] %>
+	</div>
+<% end %>
+
 <div class="user-information">
 	<div class="user-information-head">Not a user yet?</div>
 	<div class="user-content">
