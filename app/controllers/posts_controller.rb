@@ -46,8 +46,6 @@ class PostsController < ApplicationController
       res = Geokit::Geocoders::GoogleGeocoder.geocode(@post.position)
 
       @map = GMap.new("post-location-" + @post.id.to_s)
-      @map.control_init(:large_map => true,
-                        :map_type => true)
       @map.center_zoom_init([res.lat,res.lng],8)
       @map.icon_global_init( GIcon.new(:image => @post.user.photo.url(:mini),
                                        :shadow => "../images/icons/gmap-icon-shadow.png",

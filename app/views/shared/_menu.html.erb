@@ -14,7 +14,7 @@
 	</ul>
 <% else %>
 	<ul id="menu">
-		<li id="index"><%= link_to "" %></li>
+		<li id="index"><%= link_to "", welcome_index_path %></li>
 		<li id="feed"><%= link_to "", posts_path %></li>
 		<li id="long-space">
 			<% form_tag posts_path, :method => 'get' do %>

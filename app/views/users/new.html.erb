@@ -1,9 +1,10 @@
-<%= error_messages_for @user %>
-<% if flash[:notice] %>
-	<div class="flash-notice">
-		<%= t :observe %>:<br />
-		<%= flash[:notice] %>
-	</div>
+
+<% if flash[:notice] or error_messages_for @user %>
+<div class="flash-notice">
+	<%= t :observe %>:<br />
+	<%= flash[:notice] %>
+	<%= error_messages_for @user %>
+</div>
 <% end %>
 
 <div id="static-border">	
@@ -12,7 +13,7 @@
 	</div>
 	<div id="static-mid">
 		<div class="column-onethird">
-		<%= form_for @user do |f| %>
+			<%= form_for @user do |f| %>
 			<div>
 				<%= f.label :name %><br />
 				<%= f.text_field :name %>
@@ -20,19 +21,19 @@
 			<div>
 				<%= f.label :email %><br />
 				<%= f.text_field :email %>
-		  </div>
-		  <div>
-		    <%= f.label :password %><br />
-		    <%= f.password_field :password %>
-		  </div>
+			</div>
 			<div>
-		    <%= f.label :password_confirmation %><br />
-		    <%= f.password_field :password_confirmation %>
-		  </div>
-		  <div>
-		    <%= f.submit "Sign up" %>
-		  </div>
-		<% end %>
+				<%= f.label :password %><br />
+				<%= f.password_field :password %>
+			</div>
+			<div>
+				<%= f.label :password_confirmation %><br />
+				<%= f.password_field :password_confirmation %>
+			</div>
+			<div>
+				<%= f.submit "Sign up" %>
+			</div>
+			<% end %>
 		</div>
 		<div class="column-onethird-italic">
 			“We like you, don't be a dick.”

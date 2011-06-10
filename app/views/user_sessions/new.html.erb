@@ -1,9 +1,10 @@
-<%= error_messages_for @user_session %>
 
-<% if flash[:notice] %>
+<div id="content-border">
+<% if flash[:notice] or error_messages_for @user_session %>
 	<div class="flash-notice">
 		<%= t :observe %>:<br />
-		<%= flash[:notice] %>
+		<%= flash[:notice] %><br />
+		<%= error_messages_for @user_session %>
 	</div>
 <% end %>
 
@@ -34,4 +35,5 @@
 </div>
 <div class="login-onethird-italic">
 	“where you can stalk your friends, enemies, lovers, ex-lovers or just anyone else you like.”
+</div>
 </div>

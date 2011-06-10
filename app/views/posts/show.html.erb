@@ -1,8 +1,0 @@
-<h1>Post#show</h1>
-<h2><%= @post.title %></h2>
-<p><%= @post.content %></p>
-<% unless @post.comments.empty? %>
-	<table>
-		<%= render @comments %>
-	</table>
-<% end %>
