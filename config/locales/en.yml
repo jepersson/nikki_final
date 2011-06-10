@@ -57,7 +57,7 @@ en:
   delete: "Delete"
   
 # Edit Post
-  post_updated: "Your post was updated."
+  post_updated: "Your post was successfully saved."
   
 # New User
   registration: "Registration"
@@ -74,7 +74,7 @@ en:
   name: "Name"
   intro: "Introduction"
   password_confirmation: "Password confirmation"
-  update_user: "Your information was updated successfully."
+  update_user: "Your information was saved successfully."
 
 # New Session
   login: "Login"
