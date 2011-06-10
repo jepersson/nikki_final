@@ -1,6 +1,7 @@
 <% case params[:view] %>
 	<% when "photo" %>
-		<img src="../images/user/f.jpg">
+		<%= link_to image_tag(@user.photo.url(:small)), @user.photo.url(:original),
+		 	:rel => "lightbox", :title => @user.name %>
 	<% when "info" %>
 		<div class="user-head"><%= @user.name %></div>
 		<div class="user-content"><%= @user.intro %></div>

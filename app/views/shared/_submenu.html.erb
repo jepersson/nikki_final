@@ -1,24 +1,26 @@
 <% if params[:search] %>
-	<div class="sub-menu-head">Search:</div>
+	<div class="sub-menu-head"><%= t :search %>:</div>
 	<div class="pagination">
 		<%= link_to t(:posts), posts_path(:search => params[:search]) %>
 		<%= link_to t(:users), users_path(:search => params[:search]) %>
 	</div>
 <% elsif current_user != nil %>
- 	<div class="sub-menu-head">Posts:</div>
+ 	<div class="sub-menu-head"><%= t :posts %>:</div>
 	<div class="pagination">
 		<%= link_to t(:stalking), posts_path(:view => "stalking") %>
 		<%= link_to t(:my_posts), posts_path(:view => "my") %>
+		<%= link_to t(:all_posts), posts_path %>
 	</div>
-	<div class="sub-menu-head">Users:</div>
+	<div class="sub-menu-head"><%= t :users %>:</div>
 	<div class="pagination">
 		<%= link_to t(:stalking), users_path(:view => "stalking") %>
 		<%= link_to t(:stalkers), users_path(:view => "stalkers") %>
+		<%= link_to t(:all_users), users_path %>
 	</div>
 <% else %>
-	<div class="sub-menu-head">Feeds:</div>
+	<div class="sub-menu-head"><%= t :feeds %>:</div>
 	<div class="pagination">
-		<%= link_to t(:posts), posts_path(:search => params[:search]) %>
-		<%= link_to t(:posts), users_path(:search => params[:search]) %>
+		<%= link_to t(:posts), posts_path %>
+		<%= link_to t(:posts), users_path %>
 	</div>	
 <% end %>

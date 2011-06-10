@@ -1,14 +1,5 @@
 <div id="content-border">
-	<div class="content-divider">
-		<div class="sub-menu-head">Latest Posts</div>
-	</div>
-	<% if flash[:notice] %>
-		<div class="flash-notice">
-			<%= t :observe %>:<br />
-			<%= flash[:notice] %>
-		</div>
-	<% end %>
-	<%= render 'posts/posts' %>
+	<div id="results"><%= render 'welcome/welcome_content' %></div>
 	
 	<div id="static-border">
 		<div id="static-head">

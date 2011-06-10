@@ -1,0 +1,49 @@
+<%= error_messages_for @post %>
+<div id="content-border">
+	<% if flash[:notice] %>
+		<div class="flash-notice">
+			<%= t :observe %>:<br />
+			<%= flash[:notice] %>
+		</div>
+	<% end %>
+	<% if @message %>
+		<div class="message">
+			<%= t :message %>:<br />
+			<%= @message %>
+		</div>
+	<% end %>
+	<div class="login-onethird-italic">
+		“Create a post! Be happy! Love your frinds and hug your mom”
+	</div>
+	<div class="post-frame">
+		<div class="create-post-content">
+			<% form_for @post, :html => { :multipart => true } do |f| %>
+				<div>
+					<%= f.label :title %><br />
+					<%= f.text_field :title %>
+				</div>
+				<div>
+					<%= f.label :content %><br />
+					<%= f.text_area :content %>
+				</div>
+				<div>
+					<%= f.label :position %><br />
+					<%= f.text_field :position %>
+				</div>
+				<div>
+					Use prev picture:<br />
+					<%= check_box_tag "crop" %>
+				</div>
+				<div>
+					<%= f.file_field :photo %>
+				</div>
+				<div>
+					<%= f.submit %>
+				</div>
+			<% end %>
+		</div>
+	</div>
+	<div class="login-onethird-italic">
+		“where you can stalk your friends, enemies, lovers, ex-lovers or just anyone else you like.”
+	</div>
+</div>

@@ -3,15 +3,27 @@ class UsersController < ApplicationController
     if params[:search]
       @users = User.name_like(params[:search]).
         paginate(:page => params[:page], :per_page => 9)
-      if @users.empty?
-        redirect_to posts_path(:search => params[:search])
-      end
     elsif params[:view] == "stalkers"
       @users = current_user.followers.paginate(:page => params[:page], :per_page => 9)
     elsif params[:view] == "stalking"
       @users = current_user.following.paginate(:page => params[:page], :per_page => 9)
     else
       @users = User.paginate(:page => params[:page], :per_page => 9)
+    end
+    
+    if @users.empty?
+      @message = t :no_users
+    end
+    
+    respond_to do |format|
+      format.html
+      format.js {
+        render :update do |page|
+          # 'page.replace' will replace full "results" block...works for this example
+          # 'page.replace_html' will replace "results" inner html...useful elsewhere
+          page.replace_html 'results', :partial => 'user_content'
+        end
+      }
     end
   end
 
@@ -24,7 +36,7 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     if @user.save
       flash[:notice] = t :user_created
-      redirect_to users_path
+      redirect_to posts_path
     else
       @title = t(:registration)
       render 'new'
@@ -38,8 +50,20 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update_attributes(params[:user])
-      flash[:notice] = t :updated_user
-      redirect_to @user
+      if params[:crop]
+        render 'crop', :remote => true
+      else
+        if params[:user][:photo]
+          render 'crop', :remote => true
+        else
+          if params[:user][:crop].blank?
+            flash[:notice] = t :updated_user
+            redirect_to user_path(:view => "user_posts")
+          else
+            render 'crop', :remote => true
+          end
+        end
+      end
     else
       render 'edit'
     end
@@ -47,14 +71,20 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    if params[:view] == "stalkers"
+    if params[:view] == "user_stalkers"
       @users = @user.followers.paginate(:page => params[:page], :per_page => 6)
-    elsif params[:view] == "stalking"
+      if @users.empty? or @posts.empty?
+        @message = t :no_users
+      end
+    elsif params[:view] == "user_stalking"
       @users = @user.following.paginate(:page => params[:page], :per_page => 6)
-    else
+      if @users.empty? or @posts.empty?
+        @message = t :no_users
+      end
+    elsif params[:view] == "user_posts"
       @posts = @user.posts.paginate(:page => params[:page], :per_page => 6)
     end
-
+    
     if @user.position != nil
       res = Geokit::Geocoders::GoogleGeocoder.geocode(@user.position)
       @map = GMap.new("user-location-" + @user.id.to_s)
@@ -63,6 +93,19 @@ class UsersController < ApplicationController
       @map.center_zoom_init([res.lat,res.lng],6)
       @map.overlay_init(GMarker.new([res.lat,res.lng],:title => @user.name,
                                     :info_window => @user.name))
+    end
+    
+    if params[:view] == "user_stalking" or params[:view] == "user_posts" or params[:view] == "user_stalkers"
+      respond_to do |format|
+        format.html
+        format.js {
+          render :update do |page|
+            # 'page.replace' will replace full "results" block...works for this example
+            # 'page.replace_html' will replace "results" inner html...useful elsewhere
+            page.replace_html 'results', :partial => 'show_content'
+          end
+        }
+      end
     end
   end
 

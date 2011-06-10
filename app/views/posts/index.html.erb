@@ -1,25 +1,3 @@
-
 <div id="content-border">
-  
-  <% if flash[:notice] %>
-		<div class="flash-notice">
-			<%= t :observe %>:<br />
-			<%= flash[:notice] %>
-		</div>
-	<% end %>
-	<% if @message %>
-		<div class="message">
-			<%= t :message %>:<br />
-			<%= @message %>
-		</div>
-	<% end %>
-
-	<div class="content-divider">
-		<%= render 'shared/submenu' %>
-		<div class="pagination-page"><%= t :page %>:</div>
-		<%= will_paginate @posts, :prev_label => '<', :next_label => '>' %>
-	</div>
-	
-	
-	<%= render 'posts' %>
+  <div id="results"><%= render 'posts_content' %></div>
 </div>
