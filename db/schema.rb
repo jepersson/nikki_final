@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110609231037) do
+ActiveRecord::Schema.define(:version => 20110610225839) do
 
   create_table "authentications", :force => true do |t|
     t.integer  "user_id"
@@ -61,7 +61,6 @@ ActiveRecord::Schema.define(:version => 20110609231037) do
     t.string   "password_salt"
     t.string   "crypted_password"
     t.string   "position"
-    t.integer  "fbid"
     t.string   "single_access_token"
     t.string   "photo_file_name"
     t.string   "photo_content_type"
