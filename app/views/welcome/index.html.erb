@@ -15,9 +15,11 @@
 			<div class="column-onethird-headline">
 				<%= t :welcome_login %>
 			</div>
-			<div class="column-onethird">
-				<%= render 'user_sessions/login' %>
-			</div>
+                        <% unless current_user %>
+			  <div class="column-onethird">
+			  	  <%= render 'user_sessions/login' %>
+			  </div>
+                        <% end %>
 		</div>	
 		<div id="static-tail">
 		</div>	
