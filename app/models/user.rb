@@ -37,8 +37,8 @@ class User < ActiveRecord::Base
 
   has_attached_file :photo,
   :styles => {
-    :mini => "40x40#",
-      :default_url => "../images/no-user.jpg"
+    :mini => { geometry => "40x40#",
+      :default_url => "../images/no-user.jpg" }
     :small => { :geometry => "300x400#",
                 :processors => [:cropper] },
   :original => "1024x600>" },
