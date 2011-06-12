@@ -90,7 +90,7 @@ class UsersController < ApplicationController
 
     if @user.position
       res = Geokit::Geocoders::GoogleGeocoder.geocode(@user.position)
-      @map = GMap.new("post-location-" + @user.id.to_s)
+      @map = GMap.new("user-location-" + @user.id.to_s)
       @map.center_zoom_init([res.lat,res.lng],6)
       @map.icon_global_init( GIcon.new(:image => @user.photo.url(:mini),
                                        :shadow => "../images/icons/gmap-icon-shadow.png",
